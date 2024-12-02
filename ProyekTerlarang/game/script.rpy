@@ -7,6 +7,8 @@ init python:
     import random
 
 define MC = Character("Sulthan")
+define f_MC = Character("Ayah Sulthan")
+define m_MC = Character("Mamah Sulthan")
 
 # The game starts here.
 define flash = Fade(.05, 0, .75, color="#fff")
