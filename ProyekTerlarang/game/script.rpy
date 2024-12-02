@@ -3,31 +3,37 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define e = Character("Eileen")
+init python:
+    import random
 
+define MC = Character("Sulthan")
 
 # The game starts here.
+define flash = Fade(.05, 0, .75, color="#fff")
 
 label start:
+    scene black
 
-    # Show a background. This uses a placeholder by default, but you can
-    # add a file (named either "bg room.png" or "bg room.jpg") to the
-    # images directory to show it.
+    # Teks pertama
+    centered "Hujan deras menyelimuti seluruh wilayah kota. Angin berhembus kencang dan langit begitu gelap."
 
-    scene bg room
+    # Teks kedua
+    centered "Sulthan duduk di meja belajarnya sembari menatap keluar melalui jendela kamarnya."
 
-    # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "eileen happy.png" to the images
-    # directory.
+    # Teks ketiga
+    centered "Tatapan kosong tanpa harapan terpampang di raut wajahnya setelah tiga minggu lalu dokter mendiagnosanya menderita penyakit kulit langka yang mengharuskannya menjalani medical check-up. Semakin hari, kondisinya semakin memburuk. Harapan hidup menipis karena luka bakar telah menyelimuti hampir seluruh bagian tubuhnya, menyisakan bagian wajah yang masih bersih tanpa bekas."
 
-    show eileen happy
+    # Background flashings
+    play audio "Petir.mp3" volume 1.5
+    play audio "Hujan.mp3" fadein 1 volume 0.7
+    scene black with flash
 
-    # These display lines of dialogue.
+    MC "..."
 
-    e "You've created a new Ren'Py game."
+    MC "Apakah hidupku akan berakhir seperti ini?"
 
-    e "Once you add a story, pictures, and music, you can release it to the world!"
+    MC "aku tidak tau lagi apa yang harus kulakukan. Tapi, apa yang menyebabkan aku seperti ini? setidaknya, aku ingin tau alasannya."
 
-    # This ends the game.
+    stop audio
 
     return
