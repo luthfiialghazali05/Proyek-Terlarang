@@ -1,0 +1,36 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 52, in script
+    pause(2, hard=True)
+  File "renpy/common/000statements.rpy", line 456, in execute_pause
+    delay = eval(p["delay"])
+SyntaxError: invalid syntax (script.rpy, line 52)
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script.rpy", line 52, in script
+    pause(2, hard=True)
+  File "/Applications/renpy-8.3.2-sdk/renpy/ast.py", line 1974, in execute
+    self.call("execute")
+  File "/Applications/renpy-8.3.2-sdk/renpy/ast.py", line 1953, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "/Applications/renpy-8.3.2-sdk/renpy/statements.py", line 374, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 456, in execute_pause
+    delay = eval(p["delay"])
+  File "/Applications/renpy-8.3.2-sdk/renpy/python.py", line 1207, in py_eval
+    code = py_compile(code, 'eval')
+  File "/Applications/renpy-8.3.2-sdk/renpy/python.py", line 1144, in py_compile
+    raise e
+  File "/Applications/renpy-8.3.2-sdk/renpy/python.py", line 1081, in py_compile
+    raise orig_e
+  File "/Applications/renpy-8.3.2-sdk/renpy/python.py", line 1073, in py_compile
+    tree = compile(source, filename, py_mode, ast.PyCF_ONLY_AST | flags, 1)
+SyntaxError: invalid syntax (script.rpy, line 52)
+
+macOS-10.16-x86_64-i386-64bit x86_64
+Ren'Py 8.3.2.24090902
+ProyekTerlarang 1.0
+Mon Dec  2 22:35:02 2024
