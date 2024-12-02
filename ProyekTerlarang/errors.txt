@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/options.rpy", line 65: Line is indented, but the preceding define statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    define config.main_menu_music = "main-menu-theme.mp3"
-    ^
+File "game/script.rpy", line 25: expected statement.
+    ==========================================================================================
+                                                                                              ^
 
-Ren'Py Version: Ren'Py 8.3.2.24090902
-Mon Dec  2 22:53:31 2024
+Ren'Py Version: Ren'Py 8.3.3.24111502
+Tue Dec  3 02:05:56 2024
