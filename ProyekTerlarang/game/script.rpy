@@ -153,13 +153,48 @@ label confront:
     
     "Confrontation..."
     "Coming soon"
-    return
+    menu:
+        "ayah udah diconfront, Apa yang akan kamu lakukan setelah ini?"
+        "Percaya sama ayah":
+            jump believe
+        "Lapor ke polisi":
+            jump report
 
 label investigate: 
     scene black with fade
     "Investigation..."
     "Coming soon"
+    menu:
+        "Kamu udah investigasi, Apa yang akan kamu lakukan setelah ini?"
+        "Ayah menang":
+            jump ending3
+        "Sulthan menang":
+            jump ending4
+
+label believe:
+    scene black with fade
+
+    "You Believed"
+    "ending"
     return
 
+label report:
+    scene black with fade
+
+    "You report it"
+    "ending"
     return
 
+label ending3:
+    scene black with fade
+
+    "You ending 3"
+    "ending"
+    return
+
+label ending4:
+    scene black with fade
+
+    "You ending 4"
+    "ending"
+    return
