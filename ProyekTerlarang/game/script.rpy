@@ -13,14 +13,43 @@ define Dhika = Character("Dhika")
 define Serena = Character("Serena")
 define Rika = Character("Mbak Rika")
 
-# Image Buat Character
-image mc_gray = "mc_gray.png"
-image Serena = "ibu mc.png"
-image Sulthan = "mc.png"
+#TATA ATURAN INPUT MUSIK
+#play sound "judul" argumen // untuk play sound effect (sekali doang abistu mati)
+#play music "judul" argumen // untuk play musik yang looping
+#play audio "judul" argumen // untuk play beberapa suara at the same time
 
-# Image Buat Backgroun
-image RTengah = "background/Ruang tengah.jpg"
-image RKantor = "background/Ruang Kantor.JPG"
+# Image Buat Character
+#SULTHAN
+image Sulthan = "Karakter/mc.png"
+image Sulthan_marah = "Karakter/mc marah.png"
+image Sulthan_nyengir = "Karakter/mc nyengir.png"
+image Sulthan_sedih = "Karakter/mc sedih.png"
+image Sulthan_senyumtipis = "Karakter/mc senyum tipis.png"
+image mc_gray = "Karakter/mc_gray.png"
+
+#SERENA
+image Serena = "Karakter/ibu mc.png"
+image Serena_sedih = "Karakter/ibu mc sedih.png"
+image Serena_sedihbanget = "Karakter/ibu mc sedih banget.png"
+image Serena_marah = "Karakter/ibu mc marah.png"
+
+#DHIKA
+image Dhika = "Karakter/bapa mc.png"
+image Dhika_senyum = "Karakter/bapa mc senyum.png"
+image Dhika_sedih = "Karakter/bapa mc sedih.png"
+image Dhika_marah = "Karakter/bapa mc marah.png"
+
+
+
+# Image Buat Background
+image RTengah = "background/ruang tengah.JPG"
+image kantor_ayah = "background/kantor dhika.JPG"
+image desa = "background/desa.JPG"
+image halaman = "background/halaman rumah.JPG"
+image kantor_polisi = "background/kantor polisi.JPG"
+image penjara = "background/penjara.JPG"
+image rumah = "background/rumah.JPG"
+image proyek = "background/tempat proyek.JPG"
 
 #==========================================================================================
 # The game starts here.
@@ -151,12 +180,15 @@ label kantor:
 
 label confront:
     scene black with fade
+    centered "Confrontation..."
     scene RKantor with fade
     
-    show Sulthan at right with dissolve
+    show Sulthan_sedih at right with dissolve
     "(Tidak lama, Dhika membuka pintu ruangannya)"
     show Dhika at left with dissolve
     Dhika "(Berjalan menghampiri Sulthan) Ada apa nak? Kenapa kamu menangis?"
+    hide Sulthan_sedih
+    show Sulthan_marah at right
     Sulthan "Ini semua karena Ayah! Ayah yang bikin aku jadi sakit gini."
     Dhika "Ayah bisa jelasin, itu semua tidak seperti yang kamu pikirkan."
     Sulthan "Ga seperti apa yang aku pikirin? Jelas - jelas disini ada tanda tangan Ayah berarti Ayah menyetujui proyek besar itu dong."
@@ -197,7 +229,7 @@ label investigate:
     hide Dhika with dissolve
     hide Sulthan with dissolve
 
-    "Sulthan dan Ayahnya meninggalkan ruangan kerja tersebut dan menuju rumah)"
+    "Sulthan dan Ayahnya meninggalkan ruangan kerja tersebut dan menuju rumah."
 
     scene RTengah with fade
 
@@ -299,6 +331,7 @@ label investigate:
 
 label believe:
     scene black with fade
+    scene RKantor with fade
 
     show Sulthan at right with dissolve
     show Dhika at left with dissolve
@@ -308,13 +341,15 @@ label believe:
     centered "Sulthan pun percaya pada Ayahnya dan bertekad untuk mendukung apapun yang Ayahnya lakukan. Sulthan dan Ayahnya mulai mengumpulkan semua bukti yang bisa menutup proyek tersebut dan mengakhiri semua penderitaan yang dialami."
     Sulthan "Apa yang bisa aku bantu, yah?"
     Dhika "Kita bisa mulai dengan meninjau seisi rumah dengan air yang terkontaminasi."
+    hide Sulthan
+    show Sulthan_senyumtipis at right
     Sulthan "Baiklah! Ayo kita pulang dan segera mencari bukti-buktinya!"
     # tambahin musik
     hide Dhika with dissolve
     Sulthan "(Dalam hati sambil menuruni tangga) Aku tidak percaya semua ini terjadi. 10 menit lalu aku sangat ingin menyerah dan saat ini Aku merasa sangat bahagia karena dapat menemukan penyebab masalah ini dan akan menyelesaikannya. Aku ingin cepat-cepat pulang."
-    hide Sulthan with dissolve  
+    hide Sulthan_senyumtipis with dissolve  
     scene black with fade
-    pause(2.7)
+    pause(2.0)
     scene RTengah with fade
 
     centered "Mereka sampai di rumah. dengan cepat keluar dari mobil dan berjalan menuju pintu."
@@ -322,18 +357,19 @@ label believe:
     show Sulthan at right with dissolve
     show Dhika at left with dissolve
     Dhika "Maaf, nak. Tampaknya hari sudah larut. Kita bisa memulainya esok hari karena Ayah harus bekerja."
+    hide Sulthan_senyumtipis
+    show Sulthan_sedih
     Sulthan "Yah, oke deh. Selamat tidur Ayah."
     hide Dhika with dissolve
     Sulthan "Ah padahal aku sudah sangat bersemangat. Gapapa deh aku bisa mulai esok hari."
-    hide Dhika with dissolve
+    hide Sulthan_sedih with dissolve
     scene black with fade
-    pause (2.0)
-    
+
     centered "Selang beberapa hari..."
     scene RTengah with Fade
-    show Sulthan with dissolve
+    show Sulthan_sedih with dissolve
     Sulthan "Kok gak ada info apa-apa dari Ayah. Kapan bakal dimulai, ya? Apa aku inisiatif ya buat mulai? Gak deh, aku nunggu Ayah aja."
-    hide Sulthan with dissolve
+    hide Sulthan_sedih with dissolve
     scene black with fade
     pause (2.0)
     
@@ -353,10 +389,12 @@ label believe:
     centered "Kondisi Sulthan semakin memburuk. Ia sering terbaring lemah di tempat tidur, tubuhnya semakin lemah dan sulit digerakkan. Di sisi lain, Dhika, Ayahnya, belum juga menunjukkan tindakan nyata. Semua yang dikatakannya kepada Sulthan hanyalah janji kosong."
 
     scene RTengah with fade
-    show Sulthan at left with dissolve
+    show Sulthan_sedih at left with dissolve
     show Dhika at right with dissolve
     Sulthan "Ayah… Ayah bilang akan melakukan sesuatu untuk menghentikan proyek itu… Sudah berbulan-bulan… Apa yang sudah Ayah lakukan?" 
     #tambahin musik
+    hide Dhika
+    show Dhika_sedih at right
     Dhika "Nak, Ayah masih mencari cara. Ini tidak mudah. Orang-orang di belakang proyek ini sangat kuat, dan Ayah harus berhati-hati."
     Sulthan "Berhati-hati? Ayah, aku tidak punya waktu lagi… Setiap hari, rasa sakit ini semakin parah. Apa gunanya berhati-hati kalau aku tidak akan ada di sini untuk melihat hasilnya?"
     Dhika "Sulthan, Ayah berusaha. Ayah benar-benar berusaha. Ayah hanya ingin memastikan kita semua tetap aman."
@@ -364,23 +402,24 @@ label believe:
     Dhika "Nak, tolong jangan seperti ini. Ayah… Ayah akan segera bertindak. Ayah janji."
     Sulthan "Janji? Ayah tahu aku tidak akan sempat melihat Ayah menepati janji itu…"
     Sulthan "(Dalam hati) Ah, percuma saja, aku hanya menghabiskan tenagaku untuk berdebat dengannya. Lebih baik aku tidur saja."
-    hide Sulthan with dissolve
-    hide Dhika with dissolve
+    hide Sulthan_sedih with dissolve
+    hide Dhika_sedih with dissolve
     scene black with fade
     pause (2.0)
 
     centered "Beberapa hari kemudian, Sulthan meninggal karena penyakitnya udah menyebar ke seluruh badan"
 
     scene RTengah with fade
-    show Serena at left with dissolve
-    show Dhika at right with dissolve
+    show Serena_sedihbanget at left with dissolve
+    show Dhika_sedih at right with dissolve
     Serena "Kenapa, Pak? Kenapa kita tidak melakukan apa pun? Kenapa kita biarkan Sulthan pergi seperti ini?"
     Dhika "Aku… Aku tidak tahu… Aku hanya ingin melindungi kalian… Aku pikir aku punya waktu lebih banyak…"
-    #ganti gambar serena jdi marah
+    hide Serena_sedihbanget
+    show Serena_marah
     Serena "Melindungi? Melindungi dari apa? Kau hanya melindungi dirimu sendiri, Dhika! Sulthan pergi karena kau terlalu takut untuk bertindak!"
     Dhika "Aku… Aku menyesal…"
-    hide Serena with dissolve
-    hide Dhika with dissolve
+    hide Serena_marah with dissolve
+    hide Dhika_sedih with dissolve
     scene black with fade
     pause (2.0)
 
