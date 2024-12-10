@@ -26,6 +26,7 @@ image RKantor = "background/Ruang Kantor.JPG"
 # The game starts here.
 define flash = Fade(.05, 0, .75, color="#fff")
 
+
 #Scene 1
 label start:
     stop music
@@ -168,7 +169,7 @@ label confront:
     
     centered "Pikiran Sulthan kacau. Sulthan paham bahwa Ayahnya tidak mempunyai pilihan. Namun, di sisi lain, Sulthan merasa dikhianati karena ialah yang terkena imbasnya. Sulthan mencoba untuk mempercayai Ayahnya dengan rasa ragu."
     
-    sulthan "Ayah bilang Ayah sedang memperbaiki ini semua, memangnya Ayah mau melakukan apa? Ayah emang bisa balikin kondisi aku kayak dulu?"
+    Sulthan "Ayah bilang Ayah sedang memperbaiki ini semua, memangnya Ayah mau melakukan apa? Ayah emang bisa balikin kondisi aku kayak dulu?"
     Dhika "Ayah sedang mengumpulkan bukti yang bisa mempercepat proses penutupan proyek ini. Nanti setelah proyek ini ditutup, Ayah akan fokus mencari cara untuk menyembuhkan kamu."
     hide Dhika with dissolve
     hide Sulthan with dissolve
@@ -183,14 +184,118 @@ label confront:
 
 label investigate: 
     scene black with fade
-    "Investigation..."
-    "Coming soon"
-    menu:
-        "Kamu udah investigasi, Apa yang akan kamu lakukan setelah ini?"
-        "Ayah menang":
+    centered "Investigation..."
+
+    scene RKantor with fade
+
+    show Sulthan at right with dissolve
+    Sulthan "Kayaknya ada suara langkah kaki mendekat. Aku harus bersikap tidak tahu apa-apa."
+
+    show Dhika at left with dissolve
+    Dhika "Eh, kamu sudah disini (melihat Sulthan yang lesu), kamu lagi kenapa nak?"
+    Sulthan "Ga kenapa-napa, langsung pulang aja yaa yah. Aku udah lemes banget."
+    hide Dhika with dissolve
+    hide Sulthan with dissolve
+
+    "Sulthan dan Ayahnya meninggalkan ruangan kerja tersebut dan menuju rumah)"
+
+    scene RTengah with fade
+
+    show Sulthan at left with dissolve
+    Sulthan  "Kenapa ayah bisa setega ini, apa yang ayah pikirkan ketika mengambil keputusan ini? Kenapa malah aku yang kena imbasnya? Apa yang harus aku lakukan sekarang? Apakah semua yang ku lihat benar-benar kenyataannya?"
+    Sulthan "Tidak, aku tidak boleh kalah dengan keadaan ini. Kalau ayah saja bisa melakukan ini, aku juga bisa. dia harus merasakan apa yang aku rasakan."
+    Sulthan "Bagaimana aku memulainya? Sepertinya aku harus menyusun rencana dulu. Hmm, kira-kira apa ya?"
+
+    menu :
+        "Kamu ingin melakukan investigasi, Apa yang akan kamu lakukan setelah ini?"
+        "Cek sample air di rumah":
+            Sulthan "Aha! aku bisa mulai dengan mengambil sampel air dari rumah ini. Kayaknya aku bisa pakai lab di sekolah buat meneliti ini pas jam istirahat. Aku bisa ngambil air dari wastafel di dapur."
+
+            hide Sulthan with dissolve
+            "Sulthan mengambil alat tulis dan kertas dari laci mejanya, menuliskan semua rencana yang berjalan di pikirannya, memastikan semua skenario berjalan sempurna."
+            "Tidak peduli dengan apa yang akan dihadapinya. yang ia inginkan hanya sebuah pembalasan yang sempurna. Sulthan mulai menyusun rencana yang sempurna."
+            show Sulthan at center with dissolve
+            Sulthan "Baiklah, aku akan mulai dari mengumpulkan sampel dari air di rumahku."
+            scene black with fade
+            centered "Sulthan berdiri dari meja belajarnya, membuka pintu dan mulai berjalan menuruni anak tangga, berbelok ke kanan mengikuti lorong panjang yang mengarahkannya menuju dapur. Ia melihat sekelilingnya dan berjalan mendekati wastafel yang berada tidak jauh dari kompor di sebelah kirinya. Ia membuka keran secara perlahan, memastikan air tidak mengenai bagian tubuhnya. ia mengambil 1 botol air mentah dari keran rumahnya." 
+            
+            scene RTengah with fade
+            show Sulthan at center with dissolve
+            Sulthan "Okeh, tahap 1 selesai. Besok akan kubawa ke lab di sekolah."
+            Sulthan "Saatnya tidur sebelum Ibu marah."
+
+            scene black with fade
+            "keesokan harinya, di lab sekolah..."
+
+            # scene nya ganti ke lab anjay tapi belom ada lab cuki
+            Sulthan "Pertama aku bisa mengambil strip test reagen buat mengecek kandungan airnya. Dimana strip tes nya. Kayaknya ada di rak alat-alat kimia."
+            Sulthan "Aku tinggal masukin strip tesnya ke air. Eh, aku butuh gelas kimia sepertinya."
+            Sulthan "..."
+            Sulthan "..."
+
+            Sulthan "okeh gelas kimia sudah, tinggal celup deh"
+            '...'
+            'Warna strip test berubah dari kuning menjadi ungu'
+
+            Sulthan 'Sudah kuduga, memang air ini terkontaminasi. Kira-kira mengandung apa ya?'
+            Sulthan '(membuka google)'
+            Sulthan 'WAY, Timbal konsentrasi tinggi di dalam airnya! Pantas saja tubuhku bisa jadi gini. Ayah memang sialan!'
+
+            Sulthan 'Hmmm, oke satu bukti sudah. Tapi apakah bukti ini cukup kuat untuk membuktikan ayah terlibat?'
+            Sulthan "Harus apalagi ya selanjutnya?"
+
+            menu:
+                "Cek kembali dokumen resmi semalam":
+                    Sulthan "AH IYA, PROPOSAL ITU! Aku bisa kembali ke kantor ayah dan memfoto proposalnya. Baiklah, akan kulakukan setelah pulang sekolah."
+                    hide Sulthan with dissolve
+
+                    "Selesai sekolah Sulthan langsung ke kantor ayahnya"
+                    scene black with fade
+
+                    scene RKantor with fade
+                    show Sulthan at left with dissolve
+                    Sulthan "(dalam hati) Aku ngeboong apa ya biar bisa masuk ke kantor ayah?"
+
+                    show Serena at right with dissolve
+                    Sulthan "Selamat sore, Mbak. Aku mau jemput ayah. Ayah ada dimana, ya?"
+                    Serena "Pak Dhika lagi ada di ruang meeting. Kamu tunggu di ruangannya saja ya."
+                    Sulthan "Baik, Mbak."
+                    hide Serena
+
+
+                    Sulthan "Aku harus segera mencari surat itu sebelum ketahuan orang-orang."
+                    "Sulthan membuka laci kedua meja kerja ayahnya, tempat dimana ia menemukan surat perjanjian itu."
+                    Sulthan "..."
+                    Sulthan "..."
+                    Sulthan "Ah ini dia boi"
+                    Sulthan "saatnya difoto sebagai bukti tambahan"
+                    "Cekrek!"
+
+                    Sulthan "Dengan 2 bukti ini, aku yakin polisi akan mempercayai ucapanku!"
+                    Sulthan "Saatnya melaporkan ke kantor polisi"
+                    hide Sulthan
+
+                    jump ending4
+
+
+                "Lapor Polisi":
+                    Sulthan "Rasanya sudah cukup deh bukti ini"
+                    Sulthan "Sepulang sekolah, aku langsung ke kantor polisi saja deh"
+
+                    jump ending3
+
+
+
+        "Tidak melakukan apapun":
+            Sulthan "Ah rasanya terlalu sulit untuk mencari bukti apapun, biarkan saja polisi yang melakukannya"
+            hide Sulthan with dissolve
+            
+            scene black with fade
+            "Keesokan harinya, Sulthan langsung melaporkan tindakan ayahnya ke kantor polisi"
+
             jump ending3
-        "Sulthan menang":
-            jump ending4
+
+    
 
 label believe:
     scene black with fade
