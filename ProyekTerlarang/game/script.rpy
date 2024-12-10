@@ -6,6 +6,26 @@
 init python:
     import random
 
+image main_menu_animated:
+    "gui/main_menu/main_menu_1.png"
+    pause 0.1
+    "gui/main_menu/main_menu_2.png"
+    pause 0.1
+    "gui/main_menu/main_menu_3.png"
+    pause 0.1
+    "gui/main_menu/main_menu_4.png"
+    pause 0.1
+    "gui/main_menu/main_menu_5.png"
+    pause 0.1
+    "gui/main_menu/main_menu_6.png"
+    pause 0.1
+    "gui/main_menu/main_menu_7.png"
+    pause 0.1
+    "gui/main_menu/main_menu_8.png"
+    pause 0.1
+    repeat
+
+
 #ASSETS DECLARATION
 # Definisi Character
 define Sulthan = Character("Sulthan")
@@ -491,7 +511,7 @@ label ending2:
     scene black with fade
 
     scene RKantor with fade
-    show Dhika with at left dissolve
+    show Dhika at left with dissolve
     Dhika "Kemana anak ini? Bukannya menjemputku malah kabur entah kemana. Teleponnya tidak diangkat lagi. Kira-kira apa yang dia lakukan?"
     "(Kring…. kring…. *Suara telepon berbunyi)"
     Dhika "Halo, dengan Dhika disini. Dengan siapa dimana?"

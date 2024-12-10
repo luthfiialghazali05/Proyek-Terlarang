@@ -81,13 +81,13 @@ define gui.label_text_size = 36
 define gui.notify_text_size = 24
 
 ## The size of the game's title.
-define gui.title_text_size = 80
+define gui.title_text_size = 1
 
 
 ## Main and Game Menus #########################################################
 
 ## The images used for the main and game menus.
-define gui.main_menu_background = "gui/main_menu.jpg"
+define gui.main_menu_background = "main_menu_animated"
 define gui.game_menu_background = "gui/game_menu.jpg"
 
 

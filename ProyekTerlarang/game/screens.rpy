@@ -298,6 +298,7 @@ screen navigation():
         if main_menu:
 
             textbutton _("New Game") action Start()
+            #imagebutton auto "gui/mm_start_%s.png" xpos  513 ypos 749 focus_mask True action Start()
 
         else:
 
@@ -306,8 +307,10 @@ screen navigation():
             textbutton _("Save") action ShowMenu("save")
 
         textbutton _("Load") action ShowMenu("load")
+        #imagebutton auto "gui/mm_load_%s.png" xpos  906 ypos 749 focus_mask True action ShowMenu("load")
 
         textbutton _("Option") action ShowMenu("preferences")
+        #imagebutton auto "gui/mm_options_%s.png" xpos  1299 ypos 749 focus_mask True action ShowMenu("preferences")
 
         if _in_replay:
 
@@ -316,19 +319,25 @@ screen navigation():
         elif not main_menu:
 
             textbutton _("Main Menu") action MainMenu()
-
-        textbutton _("About") action ShowMenu("about")
+        
 
         if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
 
             ## Help isn't necessary or relevant to mobile devices.
             textbutton _("Help") action ShowMenu("help")
+            #imagebutton auto "gui/mm_help_%s.png" xpos  709 ypos 919 focus_mask True action ShowMenu("help")
+
+            textbutton _("About") action ShowMenu("about")
+            #imagebutton auto "gui/mm_about_%s.png" xpos  1122 ypos 921 focus_mask True action ShowMenu("about")
+
+            
 
         if renpy.variant("pc"):
 
             ## The quit button is banned on iOS and unnecessary on Android and
             ## Web.
             textbutton _("Quit") action Quit(confirm=not main_menu)
+
 
 
 style navigation_button is gui_button
@@ -361,7 +370,54 @@ screen main_menu():
 
     ## The use statement includes another screen inside this one. The actual
     ## contents of the main menu are in the navigation screen.
-    use navigation
+    # use navigation
+    #xpos gui.navigation_xpos
+        #yalign 0.85
+
+        
+
+    if main_menu:
+
+        #textbutton _("New Game") action Start()
+        imagebutton auto "gui/mm_start_%s.png" xpos  513 ypos 749 focus_mask True action Start() hovered [Play("sound", "audio/click.wav")]
+
+    else:
+
+        textbutton _("History") action ShowMenu("history")
+
+        textbutton _("Save") action ShowMenu("save")
+
+    #textbutton _("Load") action ShowMenu("load")
+    imagebutton auto "gui/mm_load_%s.png" xpos  906 ypos 749 focus_mask True action ShowMenu("load") hovered [Play("sound", "audio/click.wav")]
+
+    #textbutton _("Option") action ShowMenu("preferences")
+    imagebutton auto "gui/mm_options_%s.png" xpos  1299 ypos 749 focus_mask True action ShowMenu("preferences") hovered [Play("sound", "audio/click.wav")]
+
+    if _in_replay:
+
+        textbutton _("End Replay") action EndReplay(confirm=True)
+
+    elif not main_menu:
+
+        textbutton _("Main Menu") action MainMenu()
+    
+
+    if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
+
+        ## Help isn't necessary or relevant to mobile devices.
+        #textbutton _("Help") action ShowMenu("help")
+        imagebutton auto "gui/mm_help_%s.png" xpos  709 ypos 919 focus_mask True action ShowMenu("help") hovered [Play("sound", "audio/click.wav")]
+
+        #textbutton _("About") action ShowMenu("about")
+        imagebutton auto "gui/mm_about_%s.png" xpos  1122 ypos 921 focus_mask True action ShowMenu("about") hovered [Play("sound", "audio/click.wav")]
+
+        
+
+    if renpy.variant("pc"):
+
+        ## The quit button is banned on iOS and unnecessary on Android and
+        ## Web.
+        textbutton _("{color=#8B0000}{size=35}Quit") xpos 1820 action Quit(confirm=not main_menu)
 
     if gui.show_name:
 
