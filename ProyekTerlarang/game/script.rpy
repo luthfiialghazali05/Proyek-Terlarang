@@ -13,14 +13,43 @@ define Dhika = Character("Dhika")
 define Serena = Character("Serena")
 define Rika = Character("Mbak Rika")
 
-# Image Buat Character
-image mc_gray = "mc_gray.png"
-image Serena = "ibu mc.png"
-image Sulthan = "mc.png"
+#TATA ATURAN INPUT MUSIK
+#play sound "judul" argumen // untuk play sound effect (sekali doang abistu mati)
+#play music "judul" argumen // untuk play musik yang looping
+#play audio "judul" argumen // untuk play beberapa suara at the same time
 
-# Image Buat Backgroun
-image RTengah = "background/Ruang tengah.jpg"
-image RKantor = "background/Ruang Kantor.JPG"
+# Image Buat Character
+#SULTHAN
+image Sulthan = "Karakter/mc.png"
+image Sulthan_marah = "Karakter/mc marah.png"
+image Sulthan_nyengir = "Karakter/mc nyengir.png"
+image Sulthan_sedih = "Karakter/mc sedih.png"
+image Sulthan_senyumtipis = "Karakter/mc senyum tipis.png"
+image mc_gray = "Karakter/mc_gray.png"
+
+#SERENA
+image Serena = "Karakter/ibu mc.png"
+image Serena_sedih = "Karakter/ibu mc sedih.png"
+image Serena_sedihbanget = "Karakter/ibu mc sedih banget.png"
+image Serena_marah = "Karakter/ibu mc marah.png"
+
+#DHIKA
+image Dhika = "Karakter/bapa mc.png"
+image Dhika_senyum = "Karakter/bapa mc senyum.png"
+image Dhika_sedih = "Karakter/bapa mc sedih.png"
+image Dhika_marah = "Karakter/bapa mc marah.png"
+
+
+
+# Image Buat Background
+image RTengah = "background/ruang tengah.JPG"
+image kantor_ayah = "background/kantor dhika.JPG"
+image desa = "background/desa.JPG"
+image halaman = "background/halaman rumah.JPG"
+image kantor_polisi = "background/kantor polisi.JPG"
+image penjara = "background/penjara.JPG"
+image rumah = "background/rumah.JPG"
+image proyek = "background/tempat proyek.JPG"
 
 #==========================================================================================
 # The game starts here.
