@@ -391,11 +391,145 @@ label believe:
     return
 
 label report:
+    show Sulthan at left with dissolve 
+    show Dhika at right with dissolve
+    Dhika   "(berjalan menghampiri Sulthan)"
+    Dhika   "Ada apa, nak? kenapa kamu menangis?"
+    Sulthan "Ini semua karena Ayah, Ayah yang bikin aku jadi sakit gini."
+    Dhika   "Ayah bisa jelasin, itu semua tidak seperti apa yang kamu pikirkan." 
+    Sulthan "Ga seperti apa yang aku pikirin? Jelas - jelas disini ada tanda tangan ayah berarti ayah sama aja setujuin proyek besar itu dong."
+    Dhika   "Iya memang benar ada tanda tangan ayah disitu, tapi ayah tidak bisa apa-apa. Ayah terpaksa menyetujui ini semua karena diancam. Kalau Ayah tidak setuju, yang ada hidup kamu dan ibu kamu dalam bahaya. Ayah juga tidak tahu kalau efeknya bakal seperti gini."
+    Sulthan "Kenapa ayah gapernah bilang hal ini ke aku atau ibu?"
+    Dhika   "Ayah cuma gamau kalian khawatir. Semenjak ayah tau kamu sakit, ayah menyesal sejadi-jadinya. Ayah tidak minta kamu memaafkan Ayah, tapi biarkan ayah coba perbaiki ini semua. Ayah cuma perlu kamu percaya sama Ayah."
+    Sulthan "Gimana mau percaya sama Ayah kalau Ayah sendiri tutup-tutupin ini semua dari aku sama Ibu. Emang ayah pikir penyakit aku bisa disembuhin?"
+    Dhika   "Iya Ayah tau Ayah salah, maafin Ayah. "
+    sulthan "Aku tau aku yang terkena imbas dari semua ini, tapi aku sadar ayah tidak punya pilihan lain. Apakah aku harus mempercayai ayahku?"
+
+
+    Sulthan "Ayah bilang Ayah lagi memperbaiki ini semua, memangnya ayah mau melakukan apa? Ayah emang bisa balikin kondisi aku kayak dulu?"
+    Dhika "Ayah lagi mengumpulkan bukti yang bisa mempercepat proses penutupan proyek ini. Nanti setelah proyek ini ditutup, ayah akan fokus mencari cara buat sembuhin kamu."
+    
+    hide Dhika with dissolve
+    hide Sulthan with dissolve
+    scene black with fade
+    centered "Setelah konfrontasi dengan ayahnya, Sulthan merasa tidak mendapat jawaban yang memuaskan. Ia memutuskan untuk melapor ke polisi meskipun tidak memiliki bukti yang kuat."
+
+    show mc_gray at left
+    Sulthan "Ah, ayah terlalu banyak basa-basi. Lebih baik aku segera pergi dari sini dan melaporkannya ke polisi. Tapi, aku membawa bukti apa? Aku bahkan tidak tahu akan melaporkan apa. Urusan nanti deh, yang penting aku harus melaporkan hal tersebut."
+    hide mc_gray at left
+    jump ending2
+    return
+
+label ending2:
+    show Sulthan at left with dissolve
+    # ganti scene ke kantor polisi
+    Sulthan "Apa aku akan benar-benar melaporkan ayahku? Biar gimana pun, dia adalah ayahku. Apakah aku terlalu gila?"
+    Sulthan "..."
+    Sulthan "..." 
+    Sulthan "Tidak..."
+    Sulthan "Aku tidak gila sama sekali. Ayah jauh lebih gila karena membiarkanku sakit."
+
+    #ini polisi
+    "Selamat sore anak muda! Apa yang bisa kami bantu?"
+
+    Sulthan "Pak, saya ingin melaporkan sebuah kejahatan. Proyek besar di dekat rumah saya menyebabkan kerusakan lingkungan, dan saya yakin itu penyebab penyakit saya. Ayah saya terlibat dalam proyek itu."
+
+    "(mengambil catatan)"
+    "Baik, Nak. Bisa dijelaskan lebih rinci? Apa yang membuat Anda yakin ayah Anda terlibat?"
+
+    Sulthan "Saya menemukan dokumen di ruang kerja ayah saya. Ada tanda tangannya di kontrak proyek besar itu. Tapi... saya tidak sempat membawa dokumen itu ke sini."
+
+    "Jadi Anda melaporkan tanpa membawa bukti?"
+
+    Sulthan "(Suaranya memelas, matanya berkaca-kaca) Iya, Pak. Tapi saya yakin sekali! Saya bisa tunjukkan lokasi proyeknya dan ceritakan apa yang terjadi!"
+
+    "(Berpikir sejenak)"
+    "Baiklah, kami akan mencatat laporan ini dan memanggil ayah Anda untuk dimintai keterangan. Tapi perlu diingat, tanpa bukti konkret, akan sulit untuk melanjutkan kasus ini. Saat ini, kau boleh kembali."
+    
+    Sulthan "Terimakasih pak telah mendengarkanku!"
+
+    hide Sulthan with dissolve
     scene black with fade
 
-    "You report it"
-    "ending"
-    return
+    scene RKantor with fade
+    show Dhika with at left dissolve
+    Dhika "Kemana anak ini? Bukannya menjemputku malah kabur entah kemana. Teleponnya tidak diangkat lagi. Kira-kira apa yang dia lakukan?"
+    "(Kring…. kring…. *Suara telepon berbunyi)"
+    Dhika "Halo, dengan Dhika disini. Dengan siapa dimana?"
+
+    "Selamat sore. Apa benar dengan pak Dhika? "
+    Dhika "Ya, benar."
+    "Kami dari kepolisian Wilayah Semeleketeha memanggil bapak untuk melakukan pemeriksaan lebih lanjut terkait laporan yang baru saja masuk beberapa jam lalu. Kami tunggu kehadirannya pada pukul 7 Malam."
+
+    Dhika "Siap pak, saya segera kesana (mematikan telepon)."
+    Dhika "Ish. Apa yang telah bocah tengil itu lakukan. Bisa-bisanya dia melaporkanku ke polisi. Memang anak gak tau diri. Aku akan memberinya pelajaran."
+    "(Dhika segera menuju kantor kepolisian)"
+    hide Dhika with dissolve
+    
+    scene black with fade
+
+    centered "(Dhika tiba di kantor polisi setelah mendapat panggilan. Ia tampak tenang namun waspada. Sulthan duduk di kursi sebelah, menunduk, tidak berani menatap ayahnya.)"
+
+
+    # masukin scene di kantor polisi
+    "Pak Dhika, kami menerima laporan dari putra Anda bahwa Anda terlibat dalam sebuah proyek besar yang diduga menyebabkan kerusakan lingkungan dan membahayakan kesehatan warga, termasuk putra Anda sendiri. Apa tanggapan Anda?"
+
+    Dhika   "Pak, saya rasa ini hanya kesalahpahaman. Sulthan anak saya, dia sedang sakit, dan mungkin pikirannya terganggu."
+
+    Sulthan "Ayah! Jangan bilang seperti itu! Aku tahu apa yang aku lihat!"
+
+    Dhika   "Nak, Ayah tidak tahu apa yang kamu lihat. Tapi Ayah yakin itu hanya salah paham. Ayah bekerja keras untuk keluarga kita, dan Ayah tidak mungkin melakukan hal-hal yang merugikan kita."
+
+    "Pak Dhika, anak Anda mengklaim ada dokumen yang menunjukkan tanda tangan Anda pada proyek tersebut. Apa tanggapan Anda?"
+
+    Dhika   "Pak, saya bisa pastikan, tidak ada dokumen seperti itu. Kalau ada, tolong tunjukkan kepada saya sekarang."
+
+    Sulthan "Aku… Aku tidak punya dokumen itu di sini, tapi aku bisa bawa nanti!"
+
+    "Sulthan, tanpa bukti konkret, kami tidak bisa melanjutkan penyelidikan ini."
+
+    Sulthan "Pak, tolong percaya sama saya…"
+
+    Dhika   "Pak Polisi, saya paham kekhawatiran anak saya. Saya juga sedih melihat kondisinya sekarang. Tapi ini semua hanya spekulasi. Jika memang ada bukti, saya siap bekerja sama."
+
+    "Nak, kami harus menutup laporan ini sampai ada bukti yang kuat. Kalau nanti Anda memiliki dokumen yang bisa mendukung laporan Anda, silakan datang lagi ke sini."
+    Sulthan "(monolog) Mau gimana lagi, aku tidak memiliki bukti apapun. Seharusnya aku foto saja proposal tadi."
+
+    scene black with fade
+
+    scene RTengah with fade
+    Dhika "Aku tahu kamu ingin keadilanmu. Tapi bukan begitu caranya. Kau hanya membuat dirimu terlihat bodoh di depan orang lain."
+
+    Sulthan "Kau sangat jahat! Kau dengan mudah melupakan semua perkataan manismu sebelumnya. Begitu mudahnya kau memutarbalikkan fakta. Bahkan kau sepertinya tidak peduli denganku. Apa kau benar-benar ayahku? Kau tidak pantas ku panggil ayah!"
+    Dhika   "Ayah menawarkan solusi kepadamu, Nak, tapi kau tidak mendengarkanku. Bagaimana ayah membantumu jika kamu melakukan itu ke ayah? Tidak perlu lepas kendali, nak. Kita bisa bicarakan ini baik-baik"
+    Sulthan "Sudah cukup omong kosongmu! Ucapanmu bahkan tidak jauh beda dengan koruptor-koruptor negeri ini"
+    Dhika   "Lantang sekali bicaramu, Nak! Apakah begitu tata krama berbicara kepada ayahmu?"
+    Sulthan  "Tidak ada ayah yang ingin mencelakakan anaknya sendiri demi keuntungannya."
+
+    hide Sulthan
+    scene black with fade
+    "Setelah kejadian itu, Sulthan tidak berbicara sepatah kata pun kepada ayahnya. Hubungan mereka semakin renggang. Sementara itu, kondisi kesehatan Sulthan semakin memburuk dari hari ke hari."
+
+    show mc_gray
+    Sulthan "(Sambil berbaring di tempat tidur, suaranya hampir tidak terdengar)"
+    Sulthan "Aku sudah mencoba… Aku sudah berusaha… Tapi semua sia-sia. Lebih baik tidak tahu apa-apa daripada mati dengan kenyataan ini."
+
+    hide mc_gray
+    centered "Beberapa minggu kemudian, Sulthan meninggal dunia. Serena menangis tersedu di samping jenazah putranya, sementara Dhika..."
+    centered "hanya duduk diam....menyesal."
+    centered "Proyek besar itu terus berjalan, memakan lebih banyak korban."
+    centered "..."
+
+    centered "Sulthan pergi meninggalkan dunia tanpa pernah melihat keadilan yang ia perjuangkan. Ayahnya, Dhika, terus hidup dengan rasa bersalah yang membebani, namun tetap tidak pernah benar-benar bertindak. Proyek besar itu menjadi simbol ketidakadilan, dan Sulthan hanyalah satu dari sekian banyak korban yang tidak pernah mendapat keadilan."
+    centered "-Tamat-"
+
+
+
+
+
+
+
+
 
 label ending3:
     scene black with fade
