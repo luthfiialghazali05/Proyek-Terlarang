@@ -150,12 +150,33 @@ label kantor:
 
 label confront:
     scene black with fade
+    scene RKantor with fade
     
-    "Confrontation..."
-    "Coming soon"
+    show Sulthan at right with dissolve
+    "(Tidak lama, Dhika membuka pintu ruangannya)"
+    show Dhika at left with dissolve
+    Dhika "(Berjalan menghampiri Sulthan) Ada apa nak? Kenapa kamu menangis?"
+    Sulthan "Ini semua karena Ayah! Ayah yang bikin aku jadi sakit gini."
+    Dhika "Ayah bisa jelasin, itu semua tidak seperti yang kamu pikirkan."
+    Sulthan "Ga seperti apa yang aku pikirin? Jelas - jelas disini ada tanda tangan Ayah berarti Ayah menyetujui proyek besar itu dong."
+    Dhika "Iya memang benar ada tanda tangan Ayah disitu, tapi Ayah tidak bisa apa-apa. Ayah terpaksa menyetujui ini semua karena diancam. Kalau Ayah tidak setuju, yang ada hidup kamu dan ibu kamu dalam bahaya. Ayah juga tidak tahu kalau efeknya bakal seperti gini."
+    Sulthan "Kenapa Ayah gapernah bilang hal ini ke aku atau Ibu?"
+    Dhika "Ayah cuma gamau kalian khawatir. Semenjak Ayah tau kamu sakit, Ayah menyesal sejadi-jadinya. Ayah tidak minta kamu memaafkan Ayah, tapi biarkan Ayah coba perbaiki ini semua. Ayah cuma perlu kamu percaya sama Ayah."
+    Sulthan "Gimana aku bisa percaya sama Ayah kalau Ayah sendiri menutupi ini semua dari aku dan Ibu? Memang Ayah pikir penyakit aku bisa disembuhin?"
+    Dhika "Iya Ayah tau Ayah salah, tolong maafkan Ayah."
+    Sulthan "(Dalam hati) Aku tau aku yang terkena imbas dari semua ini, tapi aku sadar Ayah tidak punya pilihan lain. Apakah aku harus mempercayai Ayahku?"
+    
+    centered "Pikiran Sulthan kacau. Sulthan paham bahwa Ayahnya tidak mempunyai pilihan. Namun, di sisi lain, Sulthan merasa dikhianati karena ialah yang terkena imbasnya. Sulthan mencoba untuk mempercayai Ayahnya dengan rasa ragu."
+    
+    sulthan "Ayah bilang Ayah sedang memperbaiki ini semua, memangnya Ayah mau melakukan apa? Ayah emang bisa balikin kondisi aku kayak dulu?"
+    Dhika "Ayah sedang mengumpulkan bukti yang bisa mempercepat proses penutupan proyek ini. Nanti setelah proyek ini ditutup, Ayah akan fokus mencari cara untuk menyembuhkan kamu."
+    hide Dhika with dissolve
+    hide Sulthan with dissolve
+    pause(2.0)
+
     menu:
-        "ayah udah diconfront, Apa yang akan kamu lakukan setelah ini?"
-        "Percaya sama ayah":
+        "Ayah telah dikonfrontasi, Apa yang akan kamu lakukan setelah ini?"
+        "Percaya pada Ayah":
             jump believe
         "Lapor ke polisi":
             jump report
@@ -174,8 +195,94 @@ label investigate:
 label believe:
     scene black with fade
 
-    "You Believed"
-    "ending"
+    show Sulthan at right with dissolve
+    show Dhika at left with dissolve
+    Sulthan "Aku ingin percaya pada Ayah tapi apakah Ayah bisa berjanji padaku untuk mencari solusinya?"
+    Dhika "Bisa, Ayah selama ini juga selalu mencari cara buat menyembuhkan kamu."
+    Sulthan "(Dalam hati) Mungkin Ayah ada benarnya. Sepertinya aku bisa mempercayainya. Lagipula dia juga Ayahku."
+    centered "Sulthan pun percaya pada Ayahnya dan bertekad untuk mendukung apapun yang Ayahnya lakukan. Sulthan dan Ayahnya mulai mengumpulkan semua bukti yang bisa menutup proyek tersebut dan mengakhiri semua penderitaan yang dialami."
+    Sulthan "Apa yang bisa aku bantu, yah?"
+    Dhika "Kita bisa mulai dengan meninjau seisi rumah dengan air yang terkontaminasi."
+    Sulthan "Baiklah! Ayo kita pulang dan segera mencari bukti-buktinya!"
+    # tambahin musik
+    hide Dhika with dissolve
+    Sulthan "(Dalam hati sambil menuruni tangga) Aku tidak percaya semua ini terjadi. 10 menit lalu aku sangat ingin menyerah dan saat ini Aku merasa sangat bahagia karena dapat menemukan penyebab masalah ini dan akan menyelesaikannya. Aku ingin cepat-cepat pulang."
+    hide Sulthan with dissolve  
+    scene black with fade
+    pause(2.7)
+    scene RTengah with fade
+
+    centered "Mereka sampai di rumah. dengan cepat keluar dari mobil dan berjalan menuju pintu."
+
+    show Sulthan at right with dissolve
+    show Dhika at left with dissolve
+    Dhika "Maaf, nak. Tampaknya hari sudah larut. Kita bisa memulainya esok hari karena Ayah harus bekerja."
+    Sulthan "Yah, oke deh. Selamat tidur Ayah."
+    hide Dhika with dissolve
+    Sulthan "Ah padahal aku sudah sangat bersemangat. Gapapa deh aku bisa mulai esok hari."
+    hide Dhika with dissolve
+    scene black with fade
+    pause (2.0)
+    
+    centered "Selang beberapa hari..."
+    scene RTengah with Fade
+    show Sulthan with dissolve
+    Sulthan "Kok gak ada info apa-apa dari Ayah. Kapan bakal dimulai, ya? Apa aku inisiatif ya buat mulai? Gak deh, aku nunggu Ayah aja."
+    hide Sulthan with dissolve
+    scene black with fade
+    pause (2.0)
+    
+    centered "Seminggu kemudian..."
+    scene RTengah with fade
+    show Serena at right with dissolve
+    show Sulthan at left with dissolve
+    Serena "Nak, obatnya diminum dulu ya, kondisimu sudah semakin buruk. Aktivitasmu dikurangi, ya."
+    Sulthan "Ayah gimana, bu? Ayah sudah pulang?"
+    Serena "Belum, nanti Ibu kabarin ya. Ibu turun dulu"
+    hide Serena with dissolve
+    Sulthan "Apa yang Ayah katakan cuma janji kosong, ya? sebenarnya Ayah tidak melakukan apa-apa. Tapi, hanya meyakinkanku agar aku percaya padanya."
+    hide Sulthan with dissolve
+    scene black with fade
+    pause (2.0)
+
+    centered "Kondisi Sulthan semakin memburuk. Ia sering terbaring lemah di tempat tidur, tubuhnya semakin lemah dan sulit digerakkan. Di sisi lain, Dhika, Ayahnya, belum juga menunjukkan tindakan nyata. Semua yang dikatakannya kepada Sulthan hanyalah janji kosong."
+
+    scene RTengah with fade
+    show Sulthan at left with dissolve
+    show Dhika at right with dissolve
+    Sulthan "Ayah… Ayah bilang akan melakukan sesuatu untuk menghentikan proyek itu… Sudah berbulan-bulan… Apa yang sudah Ayah lakukan?" 
+    #tambahin musik
+    Dhika "Nak, Ayah masih mencari cara. Ini tidak mudah. Orang-orang di belakang proyek ini sangat kuat, dan Ayah harus berhati-hati."
+    Sulthan "Berhati-hati? Ayah, aku tidak punya waktu lagi… Setiap hari, rasa sakit ini semakin parah. Apa gunanya berhati-hati kalau aku tidak akan ada di sini untuk melihat hasilnya?"
+    Dhika "Sulthan, Ayah berusaha. Ayah benar-benar berusaha. Ayah hanya ingin memastikan kita semua tetap aman."
+    Sulthan "Aman? Apa artinya aman kalau aku seperti ini? Ayah… Ayah hanya bicara… Semua hanya janji… Aku tidak pernah melihat Ayah melakukan apapun."
+    Dhika "Nak, tolong jangan seperti ini. Ayah… Ayah akan segera bertindak. Ayah janji."
+    Sulthan "Janji? Ayah tahu aku tidak akan sempat melihat Ayah menepati janji itu…"
+    Sulthan "(Dalam hati) Ah, percuma saja, aku hanya menghabiskan tenagaku untuk berdebat dengannya. Lebih baik aku tidur saja."
+    hide Sulthan with dissolve
+    hide Dhika with dissolve
+    scene black with fade
+    pause (2.0)
+
+    centered "Beberapa hari kemudian, Sulthan meninggal karena penyakitnya udah menyebar ke seluruh badan"
+
+    scene RTengah with fade
+    show Serena at left with dissolve
+    show Dhika at right with dissolve
+    Serena "Kenapa, Pak? Kenapa kita tidak melakukan apa pun? Kenapa kita biarkan Sulthan pergi seperti ini?"
+    Dhika "Aku… Aku tidak tahu… Aku hanya ingin melindungi kalian… Aku pikir aku punya waktu lebih banyak…"
+    #ganti gambar serena jdi marah
+    Serena "Melindungi? Melindungi dari apa? Kau hanya melindungi dirimu sendiri, Dhika! Sulthan pergi karena kau terlalu takut untuk bertindak!"
+    Dhika "Aku… Aku menyesal…"
+    hide Serena with dissolve
+    hide Dhika with dissolve
+    scene black with fade
+    pause (2.0)
+
+    centered "Beberapa minggu kemudian, Dhika duduk sendirian di kantornya. Proyek besar di dekat rumahnya tetap berjalan. Korban lain mulai bermunculan, namun tidak ada yang berani melawan. Dhika terus dihantui oleh bayangan Sulthan."
+    centered "Dhika hanya bisa menyesali tindakannya yang tidak pernah ia lakukan. Janji-janji yang ia berikan kepada Sulthan hanyalah kata-kata kosong. Proyek besar itu tetap berjalan, membawa lebih banyak penderitaan, sementara Dhika hidup dalam bayang-bayang rasa bersalah yang tak terhapuskan."
+    centered "TAMAT."
+
     return
 
 label report:
