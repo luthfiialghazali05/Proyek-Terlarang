@@ -364,7 +364,7 @@ label believe:
     Sulthan "Ah padahal aku sudah sangat bersemangat. Gapapa deh aku bisa mulai esok hari."
     hide Sulthan_sedih with dissolve
     scene black with fade
-
+    
     centered "Selang beberapa hari..."
     scene RTengah with Fade
     show Sulthan_sedih with dissolve
