@@ -63,10 +63,10 @@ image Dhika_marah = "Karakter/bapa mc marah.png"
 
 # Image Buat Background
 image RTengah = "background/ruang tengah.JPG"
-image kantor_ayah = "background/kantor dhika.JPG"
+image kantor_ayah = "background/kantor dhika.png"
 image desa = "background/desa.JPG"
 image halaman = "background/halaman rumah.JPG"
-image kantor_polisi = "background/kantor polisi.JPG"
+image kantor_polisi = "background/kantor polisi.png"
 image penjara = "background/penjara.JPG"
 image rumah = "background/rumah.JPG"
 image proyek = "background/tempat proyek.JPG"
@@ -158,7 +158,7 @@ label kantor:
 
     #pindah scene ke ruangan ayah
     #sound effect buka pintu ruangan trus duduk
-    scene RKantor with fade
+    scene kantor_ayah with fade
     show Sulthan with dissolve
     Sulthan "Huft..."
     Sulthan "(dalam hati) Kenapa aku harus hidup seperti ini? Apakah aku akan memiliki penyakit ini seumur hidupku?"
@@ -201,7 +201,7 @@ label kantor:
 label confront:
     scene black with fade
     centered "Confrontation..."
-    scene RKantor with fade
+    scene kantor_ayah with fade
     
     show Sulthan_sedih at right with dissolve
     "(Tidak lama, Dhika membuka pintu ruangannya)"
@@ -238,7 +238,7 @@ label investigate:
     scene black with fade
     centered "Investigation..."
 
-    scene RKantor with fade
+    scene kantor_ayah with fade
 
     show Sulthan at right with dissolve
     Sulthan "Kayaknya ada suara langkah kaki mendekat. Aku harus bersikap tidak tahu apa-apa."
@@ -304,7 +304,7 @@ label investigate:
                     "Selesai sekolah Sulthan langsung ke kantor ayahnya"
                     scene black with fade
 
-                    scene RKantor with fade
+                    scene kantor_ayah with fade
                     show Sulthan at left with dissolve
                     Sulthan "(dalam hati) Aku ngeboong apa ya biar bisa masuk ke kantor ayah?"
 
@@ -351,7 +351,7 @@ label investigate:
 
 label believe:
     scene black with fade
-    scene RKantor with fade
+    scene kantor_ayah with fade
 
     show Sulthan at right with dissolve
     show Dhika at left with dissolve
@@ -510,7 +510,7 @@ label ending2:
     hide Sulthan with dissolve
     scene black with fade
 
-    scene RKantor with fade
+    scene kantor_ayah with fade
     show Dhika at left with dissolve
     Dhika "Kemana anak ini? Bukannya menjemputku malah kabur entah kemana. Teleponnya tidak diangkat lagi. Kira-kira apa yang dia lakukan?"
     "(Kring…. kring…. *Suara telepon berbunyi)"
