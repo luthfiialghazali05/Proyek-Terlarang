@@ -31,7 +31,12 @@ image main_menu_animated:
 define Sulthan = Character("Sulthan")
 define Dhika = Character("Dhika")
 define Serena = Character("Serena")
-define Rika = Character("Mbak Rika")
+define Rika = Character("Mbak Rika") #sekretaris dhika
+define Polisi = Character("Polisi")
+define Jaksa = Character("Jaksa")
+define Hakim = Character("Hakim")
+define Reporter = Character("Reporter")
+
 
 #TATA ATURAN INPUT MUSIK
 #play sound "judul" argumen // untuk play sound effect (sekali doang abistu mati)
@@ -59,7 +64,20 @@ image Dhika_senyum = "Karakter/bapa mc senyum.png"
 image Dhika_sedih = "Karakter/bapa mc sedih.png"
 image Dhika_marah = "Karakter/bapa mc marah.png"
 
+#RIKA SEKRETARIS
+image Rika = "Karakter/sekretaris mc.png"
 
+#POLISI
+image Polisi = "Karakter/mc.png" #GANTI
+
+#JAKSA
+image Jaksa = "Karakter/mc.png" #GANTI
+
+#HAKIM
+image Hakim = "Karakter/mc.png" #GANTI
+
+#REPORTER
+image Reporter = "Karakter/mc.png" #GANTI
 
 # Image Buat Background
 image RTengah = "background/ruang tengah.JPG"
@@ -70,6 +88,9 @@ image kantor_polisi = "background/kantor polisi.png"
 image penjara = "background/penjara.JPG"
 image rumah = "background/rumah.JPG"
 image proyek = "background/tempat proyek.JPG"
+image lab = "background/lab.JPG"
+image lobby = "background/lobby kantor.JPG"
+image kamar_sulthan = "background/Kamar Sulthan.JPG"
 
 #==========================================================================================
 # The game starts here.
@@ -137,11 +158,11 @@ label start:
     return
 
 label kantor:
-    scene black
+    scene lobby with fade
     #scene ruangan lobby kantor
     #play music "musik lobby" volume x
     show Sulthan at left with dissolve
-    show Serena at right with dissolve
+    show Rika at right with dissolve
 
     Rika "huh??..."
 
@@ -154,7 +175,7 @@ label kantor:
     Sulthan "ohh, baiklah. Terima kasih mbak, aku tunggu di ruangan Ayah deh"
 
     hide Sulthan with dissolve
-    hide Serena 
+    hide Rika 
 
     #pindah scene ke ruangan ayah
     #sound effect buka pintu ruangan trus duduk
@@ -279,7 +300,8 @@ label investigate:
             scene black with fade
             "keesokan harinya, di lab sekolah..."
 
-            # scene nya ganti ke lab anjay tapi belom ada lab cuki
+            scene lab with fade
+            show Sulthan with dissolve
             Sulthan "Pertama aku bisa mengambil strip test reagen buat mengecek kandungan airnya. Dimana strip tes nya. Kayaknya ada di rak alat-alat kimia."
             Sulthan "Aku tinggal masukin strip tesnya ke air. Eh, aku butuh gelas kimia sepertinya."
             Sulthan "..."
@@ -301,20 +323,21 @@ label investigate:
                     Sulthan "AH IYA, PROPOSAL ITU! Aku bisa kembali ke kantor ayah dan memfoto proposalnya. Baiklah, akan kulakukan setelah pulang sekolah."
                     hide Sulthan with dissolve
 
-                    "Selesai sekolah Sulthan langsung ke kantor ayahnya"
                     scene black with fade
+                    centered "Selesai sekolah Sulthan langsung ke kantor ayahnya"
 
-                    scene kantor_ayah with fade
+                    scene lobby with fade
                     show Sulthan at left with dissolve
                     Sulthan "(dalam hati) Aku ngeboong apa ya biar bisa masuk ke kantor ayah?"
 
-                    show Serena at right with dissolve
+                    show Rika at right with dissolve
                     Sulthan "Selamat sore, Mbak. Aku mau jemput ayah. Ayah ada dimana, ya?"
                     Serena "Pak Dhika lagi ada di ruang meeting. Kamu tunggu di ruangannya saja ya."
                     Sulthan "Baik, Mbak."
-                    hide Serena
+                    hide Sulthan with dissolve
+                    hide Rika
 
-
+                    scene kantor_ayah with fade
                     Sulthan "Aku harus segera mencari surat itu sebelum ketahuan orang-orang."
                     "Sulthan membuka laci kedua meja kerja ayahnya, tempat dimana ia menemukan surat perjanjian itu."
                     Sulthan "..."
@@ -326,6 +349,7 @@ label investigate:
                     Sulthan "Dengan 2 bukti ini, aku yakin polisi akan mempercayai ucapanku!"
                     Sulthan "Saatnya melaporkan ke kantor polisi"
                     hide Sulthan
+                    scene black with fade
 
                     jump ending4
 
@@ -333,8 +357,9 @@ label investigate:
                 "Lapor Polisi":
                     Sulthan "Rasanya sudah cukup deh bukti ini"
                     Sulthan "Sepulang sekolah, aku langsung ke kantor polisi saja deh"
+                    scene black with fade
 
-                    jump ending3
+                    jump bukti1
 
 
 
@@ -345,7 +370,9 @@ label investigate:
             scene black with fade
             "Keesokan harinya, Sulthan langsung melaporkan tindakan ayahnya ke kantor polisi"
 
-            jump ending3
+            jump bukti0
+
+
 
     
 
@@ -447,7 +474,11 @@ label believe:
     centered "Dhika hanya bisa menyesali tindakannya yang tidak pernah ia lakukan. Janji-janji yang ia berikan kepada Sulthan hanyalah kata-kata kosong. Proyek besar itu tetap berjalan, membawa lebih banyak penderitaan, sementara Dhika hidup dalam bayang-bayang rasa bersalah yang tak terhapuskan."
     centered "TAMAT."
 
-    return
+    jump end_credit
+
+
+
+
 
 label report:
     show Sulthan at left with dissolve 
@@ -462,7 +493,7 @@ label report:
     Dhika   "Ayah cuma gamau kalian khawatir. Semenjak ayah tau kamu sakit, ayah menyesal sejadi-jadinya. Ayah tidak minta kamu memaafkan Ayah, tapi biarkan ayah coba perbaiki ini semua. Ayah cuma perlu kamu percaya sama Ayah."
     Sulthan "Gimana mau percaya sama Ayah kalau Ayah sendiri tutup-tutupin ini semua dari aku sama Ibu. Emang ayah pikir penyakit aku bisa disembuhin?"
     Dhika   "Iya Ayah tau Ayah salah, maafin Ayah. "
-    sulthan "Aku tau aku yang terkena imbas dari semua ini, tapi aku sadar ayah tidak punya pilihan lain. Apakah aku harus mempercayai ayahku?"
+    Sulthan "Aku tau aku yang terkena imbas dari semua ini, tapi aku sadar ayah tidak punya pilihan lain. Apakah aku harus mempercayai ayahku?"
 
 
     Sulthan "Ayah bilang Ayah lagi memperbaiki ini semua, memangnya ayah mau melakukan apa? Ayah emang bisa balikin kondisi aku kayak dulu?"
@@ -478,6 +509,10 @@ label report:
     hide mc_gray at left
     jump ending2
     return
+
+
+
+
 
 label ending2:
     show Sulthan at left with dissolve
@@ -581,25 +616,395 @@ label ending2:
 
     centered "Sulthan pergi meninggalkan dunia tanpa pernah melihat keadilan yang ia perjuangkan. Ayahnya, Dhika, terus hidup dengan rasa bersalah yang membebani, namun tetap tidak pernah benar-benar bertindak. Proyek besar itu menjadi simbol ketidakadilan, dan Sulthan hanyalah satu dari sekian banyak korban yang tidak pernah mendapat keadilan."
     centered "-Tamat-"
+    jump end_credit
 
 
 
 
+
+label bukti1:
+    hide All
+    scene black with fade
+    "Sulthan pergi ke kantor polisi"
+
+    #ADEGAN KANTOR POLISI
+    scene kantor_polisi with fade
+    show Polisi at left with dissolve
+    Polisi "Selamat siang, Nak. Ada yang bisa kami bantu?"
+    show Sulthan at right with dissolve
+    Sulthan "(Menelan ludah, suaranya pelan) Selamat siang, Pak. Saya... saya ingin melapor. "
+    Polisi "(Memperhatikan ekspresi Sulthan dengan cermat)"
+    Polisi "Tentu. Apa yang ingin kamu laporkan?"
+    Sulthan "(Terlihat ragu, memegang map lebih erat)\n
+Ini... tentang sebuah proyek besar di dekat tempat tinggal saya. Saya pikir proyek itu mencemari lingkungan kami... dan mungkin menyebabkan penyakit seperti yang saya alami."
+    Polisi "(Mengangguk dan mengisyaratkan Sulthan untuk duduk)\n Baik, mari duduk dulu. Ceritakan semuanya dari awal."
+    "(Sulthan duduk dan menarik nafas panjang)"
+    Sulthan "(Terlihat gelisah)\n Beberapa bulan setelah proyek itu dimulai, saya mulai sakit. Kulit saya gatal, ruam muncul di beberapa bagian tubuh. Awalnya kami pikir ini hanya alergi biasa, tapi semakin lama semakin parah."
+    hide Sulthan
+    show Sulthan_sedih at right
+    Polisi "(Mendengarkan dengan serius)\nDan apa yang membuatmu yakin ini berkaitan dengan proyek tersebut?"
+    Sulthan "(Sambil membuka map dan menunjukkan hasil sample air)\n
+Saya sempat menemui dokter, dan beliau bilang penyakit saya mungkin disebabkan oleh air yang terkontaminasi limbah dari proyek itu. Saya mulai mencari tahu lebih jauh… saya sempat menganalisa kandungan air yang ada di lingkungan saya dan hasilnya menunjukkan bahwa air tersebut sudah terkontaminasi oleh timbal."
+    Sulthan "Lebih parahnya lagi, saya… Saya menemukan proposal proyek besar tersebut di kantor ayah saya. Ayah saya... dia salah satu penandatangan proyek itu."
+    hide Polisi
+    show Polisi at left #kaget
+    Polisi "(Polisi mengangkat alis, terkejut, tapi tetap menjaga ketenangan.)\n Jadi, ayahmu terlibat dalam proyek ini?"
+    Sulthan "(Menunduk, suara mulai bergetar)\n
+    Saya tidak ingin mempercayainya, Pak. Tapi dokumen ini jelas menunjukkan bahwa ia tahu soal limbah itu. Saya tidak tahu harus bagaimana..."
+    Polisi "Apakah proposal tersebut berada di tanganmu sekarang?"
+    Sulthan "(Menggeleng)\n
+Tidak pak, saya takut Ayah saya mengetahui kalau saya yang mengambil proposal tersebut."
+    Polisi "(Polisi terheran, namun tetap mencoba meminta bukti lain)\n 
+    Apakah kamu memiliki bukti lain?"
+    Sulthan "(Sulthan menggeleng kembali)"
+    Polisi "Baiklah, Ini langkah besar yang kamu ambil dengan melapor. Kami akan memeriksa lebih lanjut. Tapi kamu harus tahu, melibatkan keluarga dalam masalah ini tidak akan mudah."
+    jump ending3
+
+
+
+
+
+label bukti0: 
+    hide All
+    scene black with fade
+    "Sulthan pergi ke kantor polisi"
+
+    #ADEGAN KANTOR POLISI
+    scene kantor_polisi with fade
+    show Polisi at left with dissolve
+    Polisi "Selamat siang, Nak. Ada yang bisa kami bantu?"
+    show Sulthan at right with dissolve
+    Sulthan "(Menelan ludah, suaranya pelan) Selamat siang, Pak. Saya... saya ingin melapor. "
+    Polisi "(Memperhatikan ekspresi Sulthan dengan cermat)"
+    Polisi "Tentu. Apa yang ingin kamu laporkan?"
+    Sulthan "(Terlihat ragu)\n
+Ini... tentang sebuah proyek besar di dekat tempat tinggal saya. Saya pikir proyek itu mencemari lingkungan kami... dan mungkin menyebabkan penyakit seperti yang saya alami."
+    Polisi "(Mengangguk dan mengisyaratkan Sulthan untuk duduk)\n Baik, mari duduk dulu. Ceritakan semuanya dari awal."
+    "(Sulthan duduk dan menarik nafas panjang)"
+    Sulthan "(Terlihat gelisah)\n Beberapa bulan setelah proyek itu dimulai, saya mulai sakit. Kulit saya gatal, ruam muncul di beberapa bagian tubuh. Awalnya kami pikir ini hanya alergi biasa, tapi semakin lama semakin parah."
+    hide Sulthan
+    show Sulthan_sedih at right
+    Polisi "(Mendengarkan dengan serius)\nDan apa yang membuatmu yakin ini berkaitan dengan proyek tersebut?"
+    Sulthan "Saya sempat menemui dokter, dan beliau bilang penyakit saya mungkin disebabkan oleh air yang terkontaminasi limbah dari proyek itu. Sejak saat itu, Saya mulai mencari tahu lebih jauh…"
+    Sulthan "Lalu, saya… Saya menemukan proposal proyek besar tersebut di kantor ayah saya. Ayah saya... dia salah satu penandatangan proyek itu."
+    hide Polisi
+    show Polisi at left #kaget
+    Polisi "(Polisi mengangkat alis, terkejut, tapi tetap menjaga ketenangan.)\n Jadi, ayahmu terlibat dalam proyek ini?"
+    Sulthan "(Menunduk, suara mulai bergetar)\n
+    Saya tidak ingin mempercayainya, Pak. Tapi dokumen ini jelas menunjukkan bahwa ia tahu soal limbah itu. Saya tidak tahu harus bagaimana..."
+    Polisi "Apakah proposal tersebut berada di tanganmu sekarang?"
+    Sulthan "(Menggeleng)\n
+Tidak pak, saya takut Ayah saya mengetahui kalau saya yang mengambil proposal tersebut."
+    Polisi "(Polisi terheran, namun tetap mencoba meminta bukti lain)\n 
+    Apakah kamu memiliki bukti lain?"
+    Sulthan "(Sulthan menggeleng kembali)"
+    Polisi "Baiklah, Ini langkah besar yang kamu ambil dengan melapor. Kami akan memeriksa lebih lanjut. Tapi kamu harus tahu, melibatkan keluarga dalam masalah ini tidak akan mudah."
+    jump ending3
 
 
 
 
 
 label ending3:
-    scene black with fade
+    Sulthan "(Mengangguk pelan, matanya berkaca-kaca)\n
+Saya tahu, Pak. Tapi saya tidak bisa diam saja. Orang-orang di sekitar saya... mereka mungkin terkena dampak yang sama. Ini bukan hanya tentang saya."
+    hide Polisi#kaget
+    show Polisi at left #senyumtipis
+    Polisi "(Sambil tersenyum tipis, nada suaranya meyakinkan)\n
+Kamu melakukan hal yang benar. Kami akan mulai menyelidiki ini secepatnya. Apakah kamu bersedia bekerja sama lebih lanjut jika diperlukan?"
+    hide Sulthan_sedih
+    show Sulthan at right
+    Sulthan "(Menatap polisi dengan tatapan tegas meskipun ada sedikit ketakutan di matanya)\n
+Saya siap, Pak. Apa pun yang diperlukan untuk memastikan ini tidak terus terjadi."
+    Polisi "hmmm... baiklah. Kami akan memulai penyelidikan. Terima kasih atas keberanianmu, Sulthan. Jika ada perkembangan, kami akan segera menghubungimu."
+    hide sulthan with dissolve
+    hide Polisi with dissolve#senyumtipis
 
-    "You ending 3"
-    "ending"
-    return
+    scene black with fade
+    centered "Polisi setuju memulai investigasi \n Sulthan berdiri, mengangguk pelan, dan meninggalkan kantor polisi dengan langkah berat namun hati yang lebih lega."
+    centered "Sementara itu di rumah..."
+
+    #ADEGAN DI RUMAH
+    scene rumah with fade
+    show Dhika at left
+    Dhika "Sultan kemana ya, kok belum pulang-pulang. Apa lagi ada kerja kelompok ya makanya bisa lama"
+    "(Telepon berbunyi...)"
+    #play sound bunyi telepon
+    Dhika "Halo, dengan Dhika disini. Dengan siapa dimana?"
+    Polisi "(Dari telepon) Selamat sore. Apa benar dengan pak Dhika?"
+    Dhika "Ya, benar."
+    Polisi "(Dari telepon) Kami dari kepolisian Wilayah Semeleketeha memanggil bapak untuk melakukan pemeriksaan lebih lanjut terkait laporan yang baru saja masuk beberapa jam lalu. Kami tunggu kehadirannya pada pukul 7 Malam."
+    Dhika "Ada masalah apa ini pak? Mengapa saya tiba-tiba diperiksa seperti ini? saya tidak melakukan kesalahan apapun pak!"
+    Polisi "(Dari telepon) Bapak penuhi saja panggilan ini. Kami akan jelaskan nanti. Saya harap bapak menerima panggilan ini dengan serius!"
+    Dhika "Siap pak, saya segera kesana (mematikan telepon)."
+    hide Dhika with dissolve
+
+    scene black with fade
+    centered "Sesampainya di kantor polisi, Dhika dibawa ke ruang pemeriksaan dan diinterogasi"
+
+    #ADEGAN INTEROGASI
+    centered"Pak Dhika duduk di ruang interogasi. Wajahnya tetap tenang, meskipun pertanyaan tajam terus dilontarkan oleh polisi."
+    scene kantor_polisi with fade #interogasi
+    show Dhika at left with dissolve
+    show Polisi at right with dissolve
+    Polisi "Pak Dhika, Anda adalah salah satu penandatangan utama proyek besar ini. Bukti-bukti yang kami miliki menunjukkan adanya pelanggaran pengelolaan limbah yang menyebabkan kerusakan lingkungan. Kami juga memiliki laporan transaksi keuangan mencurigakan yang melibatkan Anda. Apa penjelasan Anda?"
+    hide Dhika
+    show Dhika_senyum at left
+    Dhika "(Tersenyum kecil, tetap tenang)\n
+Saya rasa Anda salah paham. Semua yang saya lakukan sesuai prosedur. Tanggung jawab utama ada pada pihak lain."
+    Polisi "(Tatapannya tajam)\n
+Tapi Anda tahu soal limbah ini sebelum proyek dimulai, bukan? Kami juga punya bukti bahwa dana yang seharusnya digunakan untuk pengelolaan limbah tidak sampai ke tempatnya."
+    hide Dhika_senyum
+    show Dhika at left
+    Dhika "(Suara tenang, namun dengan nada manipulatif)\n
+Semua pengeluaran sudah dilaporkan ke departemen keuangan. Kalau ada yang salah, itu di luar kendali saya. Lagipula, saya hanya mengikuti instruksi atasan."
+    "Polisi terus menekan, namun Pak Dhika tidak kehilangan kendali. Dia mulai berbicara dengan lebih lembut, mencoba menggiring suasana."
+    hide Dhika
+    show Dhika_senyum at left
+    Dhika "(Sambil tersenyum tipis)\n
+Saya tahu ini pekerjaan Anda, Pak Polisi. Tapi Anda tahu bagaimana dunia ini berjalan, bukan? Tidak semuanya sehitam-putih itu."
+    "Dhika mengeluarkan amplop tebal dari tasnya dan meletakkannya di meja."
+    Dhika "(Suara rendah)\n
+Mungkin kita bisa menyelesaikan ini dengan cara yang lebih... efisien. Anda mengerti maksud saya, kan?"
+    "Polisi Terlihat ragu. Setelah beberapa saat, dia mengambil amplop itu dengan wajah datar."
+    Polisi "(Sambil berdiri)\n
+Kami akan meninjau kembali kasus ini. Untuk saat ini, Anda boleh pulang, Pak Dhika."
+    "Pak Dhika tersenyum puas, bangkit, dan meninggalkan ruangan."
+    hide Dhika_senyum with dissolve
+    hide Polisi with dissolve
+
+    scene black with fade
+    centered "Sulthan menunggu berhari-hari, berminggu-minggu, tetapi tidak mendapat kabar lebih lanjut dari Polisi."
+    centered "Ia merasa janggal karena Ia merasa semua bukti yang ia temukan sangat amat kuat untuk menjatuhkan ayahnya ke balik jeruji besi."
+    centered "Ia berinisiatif untuk kembali ke kantor polisi dan menanyakan hal tersebut."
+
+    #ADEGAN FOLLOW UP KASUS
+    scene kantor_polisi with fade
+    show Sulthan at right with dissolve
+    show Polisi at left with dissolve
+    Polisi "Selamat siang. Ada yang bisa kami bantu?"
+    Sulthan "Siang. Saya ingin menanyakan progress dari bukti yang saya laporkan mengenai pencemaran lingkungan beberapa minggu lalu."
+    Polisi "Baik, mohon tunggu sebentar. Kami akan mencari laporan tersebut."
+    hide Polisi with dissolve
+    "(Sulthan duduk, menunggu polisi kembali memanggilnya)"
+    show Polisi at left with dissolve
+    Polisi "Saya telah menemukan laporan kasus ini. Mengenai laporan tersebut telah diselesaikan dan kasus telah ditutup."
+    hide Sulthan
+    show Sulthan_marah at right
+    Sulthan "(Tercengang dan terkejut mendengar hal tersebut)\n
+HAH, Bagaimana bisa? Kenapa diselesaikan? Bukankah kasus ini bisa memakan banyak korban setelahku?"
+    Sulthan "Siapa dibalik semua ini? Mengapa Anda bisa menyelesaikannya?"
+    Polisi "Terkait hal ini, kami telah memanggil Pak Dhika selaku orang yang Anda laporkan. Setelah interogasi yang kami lakukan, kami menyimpulkan Pak Dhika tidak bersalah atas kasus ini, karena bukti yang diperoleh tidak valid."
+    Sulthan "(Di dalam hati) \nAku yakin ayah ada dibalik semua ini!"
+    hide Sulthan_marah
+    hide Polisi 
+    
+    scene black with fade
+    centered "Sulthan tampak kesal dan sangat frustasi mendengar hal tersebut."
+    centered "Ia meninggalkan kantor polisi dengan wajah seakan tidak percaya semua bukti yang telah dikumpulkan hanya berakhir seperti ini."
+    centered "Di rumah, Sulthan menghadapi ayahnya setelah mengetahui bahwa kasusnya tidak dilanjutkan."
+    
+    #ADEGAN RUMAH
+    scene rumah with fade
+    show Dhika at left with dissolve
+    show Sulthan_marah at right with dissolve
+    Sulthan "(Suara penuh emosi)\n
+Ayah! Kenapa Ayah melakukan itu? Aku tahu Ayah membayar polisi untuk menutup kasus ini!"
+    Dhika "(Suaranya dingin)\n
+    Jaga bicaramu, Sulthan. Ayah hanya melakukan apa yang perlu dilakukan untuk melindungi keluarga kita."
+    Sulthan "(Terus menekan)\n
+Melindungi? Ayah melindungi diri sendiri, bukan kita! Proyek itu sudah menghancurkan banyak orang, termasuk aku! Ayah tahu penyakitku disebabkan oleh limbah itu, kan?"
+    hide Dhika
+    show Dhika_marah at left
+    Dhika "(Suaranya semakin tegas)\n
+Dan apa yang bisa kita lakukan? Menghentikan proyek itu? Itu tidak akan terjadi. Dunia ini kejam, Sulthan. Kalau kita tidak bertahan, kita akan diinjak-injak."
+    hide Sulthan_marah
+    show Sulthan_sedih at right
+    Sulthan "(Suara bergetar, hampir menangis)\n
+Kalau begitu, Ayah rela mengorbankan semua orang, termasuk anak ayah sendiri, hanya demi uang?"
+    hide Dhika_marah
+    show Dhika at left
+    Dhika "(Mencoba meredakan suasana, tapi tetap manipulatif)\n
+Nak, kamu harus mengerti. Semua yang Ayah lakukan ini untuk masa depan kita. Proyek ini memberi kita kehidupan yang lebih baik. Jangan terlalu emosional."
+    hide Sulthan_sedih
+    show Sulthan_marah at right
+    Sulthan "(Suara penuh amarah)\n
+Masa depan yang seperti apa, Ayah? Hidup lebih baik dengan mengorbankan nyawa orang lain? Aku muak, Ayah. Aku tidak bisa tinggal di sini lagi."
+    hide Sulthan_marah with dissolve
+    Dhika "..."
+    hide dhika with dissolve
+    
+    scene black with fade
+    centered "Sulthan berjalan pergi ke kamarnya, meninggalkan ayahnya yang terlihat marah tapi tetap tenang."
+    centered "Beberapa hari kemudian, Sulthan berbicara dengan ibunya di ruang tamu. Wajahnya terlihat pucat karena penyakitnya semakin parah."
+
+    #ADEGAN HUBUNGAN YANG MEMBURUK
+    scene rumah with fade
+    show Sulthan_sedih at left with dissolve
+    show Serena_sedih at right with dissolve
+    Serena "(Sambil menyentuh bahu Sulthan)\n
+Sulthan, Ayahmu hanya mencoba melindungi keluarga ini. Jangan terlalu keras padanya."
+    Sulthan "(Suaranya lemah, namun penuh tekad)\n
+Bu, Ayah tidak melindungi siapa pun. Dia hanya melindungi dirinya sendiri. Proyek itu tetap berjalan, dan korban terus berjatuhan. Aku sudah tidak tahu lagi harus bicara apa dengannya."
+    hide Serena_sedih
+    show Serena_sedihbanget
+    Serena "(Menangis pelan)\n
+Nak, kita tidak punya pilihan. Ayahmu punya banyak tekanan."
+    Sulthan "(Memandang ibunya dengan mata penuh rasa sakit)\n
+Tidak ada yang memaksa Ayah untuk memilih jalan ini, Bu. Dia yang memutuskan untuk korupsi, untuk menutup mata terhadap penderitaan orang lain."
+    hide Sulthan_sedih with dissolve
+    hide Serena_sedihbanget with dissolve
+
+    #ADEGAN SULTHAN LIAT PROYEK MASIH BERJALAN
+    scene proyek with fade
+    centered "Sulthan berdiri di depan proyek besar yang masih beroperasi. Truk-truk besar dan mesin berat terus bekerja. Ia merasa kecewa dan marah."
+    show Sulthan_sedih
+    Sulthan "..."
+    "Proyek besar itu terus berjalan, memakan lebih banyak korban tanpa ada yang bisa menghentikannya."
+    "Sulthan hanya bisa melihat dari kejauhan, tubuhnya semakin lemah akibat penyakit yang ia derita."
+    hide Sulthan_sedih
+    
+    scene black with fade
+    centered "Sulthan hanya bisa terduduk di tanah, menatap proyek tersebut dengan air mata mengalir di pipinya."
+    centered "Tamat"
+
+    jump end_credit
+
+
+
+
 
 label ending4:
+    hide All
     scene black with fade
+    "Sulthan pergi ke kantor polisi"
 
-    "You ending 4"
-    "ending"
+    #ADEGAN KANTOR POLISI
+    scene kantor_polisi with fade
+    show Polisi at left with dissolve
+    Polisi "Selamat siang, Nak. Ada yang bisa kami bantu?"
+    show Sulthan at right with dissolve
+    Sulthan "(Menelan ludah, suaranya pelan) Selamat siang, Pak. Saya... saya ingin melapor. "
+    Polisi "(Memperhatikan ekspresi Sulthan dengan cermat)"
+    Polisi "Tentu. Apa yang ingin kamu laporkan?"
+    Sulthan "(Terlihat ragu, memegang map lebih erat)\n
+Ini... tentang sebuah proyek besar di dekat tempat tinggal saya. Saya pikir proyek itu mencemari lingkungan kami... dan mungkin menyebabkan penyakit seperti yang saya alami."
+    Polisi "(Mengangguk dan mengisyaratkan Sulthan untuk duduk)\n Baik, mari duduk dulu. Ceritakan semuanya dari awal."
+    "(Sulthan duduk dan menarik nafas panjang)"
+    Sulthan "(Terlihat gelisah)\n Beberapa bulan setelah proyek itu dimulai, saya mulai sakit. Kulit saya gatal, ruam muncul di beberapa bagian tubuh. Awalnya kami pikir ini hanya alergi biasa, tapi semakin lama semakin parah."
+    hide Sulthan
+    show Sulthan_sedih at right
+    Polisi "(Mendengarkan dengan serius)\nDan apa yang membuatmu yakin ini berkaitan dengan proyek tersebut?"
+    Sulthan "(Sambil membuka map dan menunjukkan dokumen)\nSaya sempat menemui dokter, dan beliau bilang penyakit saya mungkin disebabkan karena proyek ini, karena dalam proposal ini diterangkan bahwa terdapat beberapa kerugian yang disebabkan proyek ini apabila proyek ini dijalankan."
+    hide Polisi
+    show Polisi at left #kaget
+    Polisi "(Polisi mengangkat alis, terkejut, tapi tetap menjaga ketenangan.)\n Jadi, ayahmu terlibat dalam proyek ini?"
+    Sulthan "(Menunduk, suara mulai bergetar)\n
+    Saya tidak ingin mempercayainya, Pak. Tapi dokumen ini jelas menunjukkan bahwa ia tahu soal limbah itu. Saya tidak tahu harus bagaimana..."
+    Polisi "(Sambil melihat dokumen dan mencatat)\n
+Ini langkah besar yang kamu ambil dengan melapor. Kami akan memeriksa dokumen ini. Tapi kamu harus tahu, melibatkan keluarga dalam masalah ini tidak akan mudah."
+    Sulthan "(Mengangguk pelan, matanya berkaca-kaca)\n
+Saya tahu, Pak. Tapi saya tidak bisa diam saja. Orang-orang di sekitar saya... mereka mungkin terkena dampak yang sama. Ini bukan hanya tentang saya."
+    hide Polisi#kaget
+    show Polisi at left #senyumtipis
+    Polisi "(Sambil tersenyum tipis, nada suaranya meyakinkan)\n
+Kamu melakukan hal yang benar. Kami akan mulai menyelidiki ini secepatnya. Apakah kamu bersedia bekerja sama lebih lanjut jika diperlukan?"
+    hide Sulthan_sedih
+    show Sulthan at right
+    Sulthan "(Menatap polisi dengan tatapan tegas meskipun ada sedikit ketakutan di matanya)\n
+Saya siap, Pak. Apa pun yang diperlukan untuk memastikan ini tidak terus terjadi."
+    Polisi "hmmm... baiklah. Kami akan memulai penyelidikan. Terima kasih atas keberanianmu, Sulthan. Jika ada perkembangan, kami akan segera menghubungimu."
+    hide sulthan with dissolve
+    hide Polisi with dissolve#senyumtipis
+
+    scene black with fade
+    centered "Polisi setuju memulai investigasi \n Sulthan berdiri, mengangguk pelan, dan meninggalkan kantor polisi dengan langkah berat namun hati yang lebih lega."
+    centered "Sementara itu di rumah..."
+
+    #ADEGAN DI RUMAH
+    scene rumah with fade
+    show Dhika at left
+    Dhika "Sultan kemana ya, kok belum pulang-pulang. Apa lagi ada kerja kelompok ya makanya bisa lama"
+    "(Telepon berbunyi...)"
+    #play sound bunyi telepon
+    Dhika "Halo, dengan Dhika disini. Dengan siapa dimana?"
+    Polisi "(Dari telepon) Selamat sore. Apa benar dengan pak Dhika?"
+    Dhika "Ya, benar."
+    Polisi "(Dari telepon) Kami dari kepolisian Wilayah Semeleketeha memanggil bapak untuk melakukan pemeriksaan lebih lanjut terkait laporan yang baru saja masuk beberapa jam lalu. Kami tunggu kehadirannya pada pukul 7 Malam."
+    Dhika "Ada masalah apa ini pak? Mengapa saya tiba-tiba diperiksa seperti ini? saya tidak melakukan kesalahan apapun pak!"
+    Polisi "(Dari telepon) Bapak penuhi saja panggilan ini. Kami akan jelaskan nanti. Saya harap bapak menerima panggilan ini dengan serius!"
+    Dhika "Siap pak, saya segera kesana (mematikan telepon)."
+    hide Dhika
+
+    scene black with fade
+    centered "Sesampainya di kantor polisi, Dhika dibawa ke ruang pemeriksaan dan diinterogasi"
+
+    #ADEGAN INTEROGASI
+    scene kantor_polisi with fade #interogasi
+    show Dhika at left with dissolve
+    show Polisi at right with dissolve
+    Polisi "Pak Dhika, dokumen ini menunjukkan bahwa Anda menerima laporan tentang limbah beracun sebelum proyek dimulai. Tapi Anda tetap menandatangani persetujuan. Ada juga bukti bahwa beberapa dana yang seharusnya digunakan untuk pengelolaan limbah tidak sesuai penggunaannya. Bisa Anda jelaskan?"
+    Dhika "(Suaranya bergetar)\n
+Saya tidak tahu apa-apa soal itu! Saya hanya bertanggung jawab pada bagian administrasi dan operasional. Bagian keuangan dan lingkungan yang mengatur alokasi dana."
+    Polisi "(Sambil mengetuk meja dengan pena)\n
+Tapi tanda tangan Anda ada di dokumen anggaran ini, Pak Dhika. Kami juga menemukan transfer mencurigakan ke rekening pribadi Anda dari salah satu subkontraktor proyek. Bagaimana Anda menjelaskan hal ini?"
+    Dhika "(Terlihat semakin panik\n
+Itu hanya bonus... itu... itu bagian dari insentif proyek! Tidak ada yang ilegal!"
+    Polisi "(Menatap tajam)\n
+Bonus? Atau Anda menutup mata terhadap pelanggaran lingkungan sebagai gantinya? Karena, dari semua bukti ini, tampaknya Anda menerima pembayaran untuk membiarkan pengelolaan limbah ini diabaikan."
+    hide Dhika
+    show Dhika_marah at left
+    Dhika "(Mulai kehilangan ketenangan, suaranya meninggi)\n
+Saya tidak tahu kalau ini akan berdampak separah ini! Saya hanya melakukan apa yang disuruh oleh atasan saya."
+    Polisi "(Tenang namun tegas) \n
+Pak Dhika, ini bukan hanya tentang Anda. Ini soal ratusan orang yang terkena dampak pencemaran ini. Dan dari semua bukti yang kami miliki, Anda terlibat dalam korupsi yang menyebabkan dampak besar pada kesehatan masyarakat dan lingkungan."
+    hide Dhika_marah
+    show Dhika_sedih at left
+    Dhika "..."
+    hide Dhika_sedih
+    hide Polisi 
+
+    scene black with fade
+    centered "Kasus berlanjut hingga tahap persidangan"
+    centered "Di ruang sidang, Pak Dhika berdiri sebagai terdakwa. Jaksa memaparkan argumennya."
+
+    #ADEGAN SIDANG
+    scene kantor_polisi with fade #ruang sidang
+    show Dhika_sedih at left  with dissolve
+    show Jaksa at right with dissolve
+    show Hakim at center with dissolve
+    Jaksa "Yang Mulia, terdakwa, Pak Dhika, tidak hanya lalai dalam tanggung jawabnya sebagai manajer proyek, tetapi juga menerima suap untuk mengabaikan pelanggaran pengelolaan limbah. Bukti transfer dana ilegal dan dokumen proyek menunjukkan bahwa terdakwa secara sadar menempatkan keuntungan pribadi di atas kepentingan masyarakat dan lingkungan."
+    Hakim "(mengetuk palu)\n
+Terdakwa dinyatakan bersalah atas kelalaian yang menyebabkan pencemaran lingkungan, serta tindak pidana korupsi. Pengadilan menjatuhkan hukuman lima tahun penjara dan denda sebesar 1,5 miliar rupiah, yang sebagian akan diberikan sebagai kompensasi kepada korban pencemaran."
+    hide Dhika_sedih
+    hide Jaksa
+    hide Hakim
+    scene kantor_polisi with fade #kursi penonton
+    show Sulthan_senyumtipis with dissolve
+    "Sulthan duduk di kursi penonton, menunduk mendengar putusan hakim. Ada rasa sakit bercampur kelegaan di wajahnya."
+    hide Sulthan_senyumtipis with dissolve
+    
+    scene proyek with fade
+    show Sulthan at left with dissolve
+    "Sulthan berdiri di depan lokasi proyek yang sekarang ditutup. Seorang reporter mendekatinya."
+    show Reporter at right with dissolve
+    Reporter "Sulthan, apa pendapat Anda tentang penutupan proyek ini dan pengungkapan kasus korupsi yang melibatkan beberapa pejabat?"
+    hide Sultan
+    show Sulthan_senyumtipis at left
+    Sulthan "(Menatap lokasi proyek yang kosong)\n
+    Proyek ini seharusnya membawa manfaat, bukan kerusakan. Tapi karena keserakahan dan korupsi, semuanya hancur. Saya berharap ini menjadi pengingat bahwa uang tidak sebanding dengan nyawa dan lingkungan."
+    "Reporter mengangguk, lalu meninggalkan Sulthan yang berdiri diam, merenungi semua yang telah terjadi."
+    hide Reporter with dissolve
+    "Sulthan merenungkan apakah yang Ia lakukan adalah langkah yang tepat. Ia tahu, untuk kebaikan orang banyak, Ia harus melakukan hal ini\n
+    Tetapi... Sekarang ayah yang Ia sayangi berakhir di penjara"
+    "Namun, Ia yakin bahwa yang Ia lakukan adalah hal yang tepat. Pengorbanan yang Ia lakukan adalah langkah yang mulia untuk menyelamatkan orang banyak. Kalau bukan ia yang melakukannya, siapa lagi?"
+    
+    scene black with fade
+    centered "Dhika dipenjara, Proyek berhenti beroperasi.\nSulthan dan warga sekitar pun kian membaik dan menjadi sehat kembali"
+    centered "Tamat"
+    jump end_credit
+
+label end_credit:
+    scene black
+    "Ini Credit ya ges"
     return
