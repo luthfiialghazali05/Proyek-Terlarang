@@ -1,30 +1,38 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While running game code:
-  File "game/script.rpy", line 662, in script
-    scene black with Fade
-Exception: Expected transition to return a displayable, not a <partial <function Fade at 0x0000000003706310> () {'old_widget': <renpy.display.layout.Fixed object at 0x000000000676db20>, 'new_widget': <renpy.display.layout.Fixed object at 0x000000000676dd30>}>
+Compiling ATL code at game/script.rpy:407
+  File "game/script.rpy", line 403, in script
+    show HP with dissolve:
+Exception: Expression '0.5' is not an ATL transform, and so cannot be included in an ATL interpolation.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 662, in script
-    scene black with Fade
-  File "D:\renpy-8.3.3-sdk\renpy\ast.py", line 1361, in execute
-    renpy.exports.with_statement(trans, paired=paired)
-  File "D:\renpy-8.3.3-sdk\renpy\exports\statementexports.py", line 257, in with_statement
-    return renpy.game.interface.do_with(trans, paired, clear=clear)
-  File "D:\renpy-8.3.3-sdk\renpy\display\core.py", line 1578, in do_with
-    return self.interact(trans_pause=True,
-  File "D:\renpy-8.3.3-sdk\renpy\display\core.py", line 2215, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "D:\renpy-8.3.3-sdk\renpy\display\core.py", line 2666, in interact_core
-    trans = instantiate_transition(None, old_root, layers_root)
-  File "D:\renpy-8.3.3-sdk\renpy\display\core.py", line 2580, in instantiate_transition
-    raise Exception("Expected transition to return a displayable, not a {!r}".format(trans))
-Exception: Expected transition to return a displayable, not a <partial <function Fade at 0x0000000003706310> () {'old_widget': <renpy.display.layout.Fixed object at 0x000000000676db20>, 'new_widget': <renpy.display.layout.Fixed object at 0x000000000676dd30>}>
+  File "game/script.rpy", line 403, in script
+    show HP with dissolve:
+  File "/Applications/renpy-8.3.2-sdk/renpy/ast.py", line 1111, in execute
+    show_imspec(self.imspec, atl=getattr(self, "atl", None))
+  File "/Applications/renpy-8.3.2-sdk/renpy/ast.py", line 1074, in show_imspec
+    renpy.config.show(name,
+  File "/Applications/renpy-8.3.2-sdk/renpy/exports/displayexports.py", line 503, in show
+    sls.add(layer, img, key, zorder, behind, at_list=at_list, name=name, atl=atl, default_transform=default_transform, transient=transient)
+  File "/Applications/renpy-8.3.2-sdk/renpy/display/scenelists.py", line 477, in add
+    thing.visit_all(lambda d : None)
+  File "/Applications/renpy-8.3.2-sdk/renpy/display/displayable.py", line 424, in visit_all
+    for d in self.visit():
+  File "/Applications/renpy-8.3.2-sdk/renpy/atl.py", line 816, in visit
+    block = self.compile()
+  File "/Applications/renpy-8.3.2-sdk/renpy/atl.py", line 723, in compile
+    block = self.atl.compile(self.context)
+  File "/Applications/renpy-8.3.2-sdk/renpy/atl.py", line 925, in compile
+    statements = [ i.compile(ctx) for i in self.statements ]
+  File "/Applications/renpy-8.3.2-sdk/renpy/atl.py", line 925, in <listcomp>
+    statements = [ i.compile(ctx) for i in self.statements ]
+  File "/Applications/renpy-8.3.2-sdk/renpy/atl.py", line 1292, in compile
+    raise Exception("Expression %r is not an ATL transform, and so cannot be included in an ATL interpolation." % expr)
+Exception: Expression '0.5' is not an ATL transform, and so cannot be included in an ATL interpolation.
 
-Windows-10-10.0.19045 AMD64
-Ren'Py 8.3.3.24111502
+macOS-10.16-x86_64-i386-64bit x86_64
+Ren'Py 8.3.2.24090902
 ProyekTerlarang 1.0
-Sun Dec 15 15:04:13 2024
+Mon Dec 16 23:45:02 2024
