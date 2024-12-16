@@ -273,6 +273,8 @@ label confront:
     Dhika "Ayah cuma gamau kalian khawatir. Semenjak Ayah tau kamu sakit, Ayah menyesal sejadi-jadinya. Ayah tidak minta kamu memaafkan Ayah, tapi biarkan Ayah coba perbaiki ini semua. Ayah cuma perlu kamu percaya sama Ayah."
     Sulthan "Gimana aku bisa percaya sama Ayah kalau Ayah sendiri menutupi ini semua dari aku dan Ibu? Memang Ayah pikir penyakit aku bisa disembuhin?"
     Dhika "Iya Ayah tau Ayah salah, tolong maafkan Ayah."
+    hide Sulthan_marah
+    show Sulthan at right
     Sulthan "(Dalam hati) Aku tau aku yang terkena imbas dari semua ini, tapi aku sadar Ayah tidak punya pilihan lain. Apakah aku harus mempercayai Ayahku?"
     
     "Pikiran Sulthan kacau. Sulthan paham bahwa Ayahnya tidak mempunyai pilihan. Namun, di sisi lain, Sulthan merasa dikhianati karena ialah yang terkena imbasnya. Sulthan mencoba untuk mempercayai Ayahnya dengan rasa ragu." 
@@ -455,7 +457,7 @@ label believe:
     Sulthan "Aku ingin percaya pada Ayah tapi apakah Ayah bisa berjanji padaku untuk mencari solusinya?"
     Dhika "Bisa, Ayah selama ini juga selalu mencari cara buat menyembuhkan kamu."
     Sulthan "(Dalam hati) Mungkin Ayah ada benarnya. Sepertinya aku bisa mempercayainya. Lagipula dia juga Ayahku."
-    centered "Sulthan pun percaya pada Ayahnya dan bertekad untuk mendukung apapun yang Ayahnya lakukan. Sulthan dan Ayahnya mulai mengumpulkan semua bukti yang bisa menutup proyek tersebut dan mengakhiri semua penderitaan yang dialami."
+    "Sulthan pun percaya pada Ayahnya dan bertekad untuk mendukung apapun yang Ayahnya lakukan. Sulthan dan Ayahnya mulai mengumpulkan semua bukti yang bisa menutup proyek tersebut dan mengakhiri semua penderitaan yang dialami."
     Sulthan "Apa yang bisa aku bantu, yah?"
     Dhika "Kita bisa mulai dengan meninjau seisi rumah dengan air yang terkontaminasi."
     hide Sulthan
@@ -469,12 +471,12 @@ label believe:
     pause(2.0)
     scene RTengah with fade
 
-    centered "Mereka sampai di rumah. dengan cepat keluar dari mobil dan berjalan menuju pintu."
+    "Mereka sampai di rumah. dengan cepat keluar dari mobil dan berjalan menuju pintu."
 
     show Sulthan at right with dissolve
     show Dhika at left with dissolve
     Dhika "Maaf, nak. Tampaknya hari sudah larut. Kita bisa memulainya esok hari karena Ayah harus bekerja."
-    hide Sulthan_senyumtipis
+    hide Sulthan
     show Sulthan_sedih
     Sulthan "Yah, oke deh. Selamat tidur Ayah."
     hide Dhika with dissolve
@@ -491,21 +493,23 @@ label believe:
     pause (2.0)
     
     centered "Seminggu kemudian..."
-    scene RTengah with fade
+    scene kamar_sulthan with fade
     show Serena at right with dissolve
     show Sulthan at left with dissolve
     Serena "Nak, obatnya diminum dulu ya, kondisimu sudah semakin buruk. Aktivitasmu dikurangi, ya."
     Sulthan "Ayah gimana, bu? Ayah sudah pulang?"
     Serena "Belum, nanti Ibu kabarin ya. Ibu turun dulu"
     hide Serena with dissolve
+    hide Sulthan
+    show Sulthan_sedih at left
     Sulthan "Apa yang Ayah katakan cuma janji kosong, ya? sebenarnya Ayah tidak melakukan apa-apa. Tapi, hanya meyakinkanku agar aku percaya padanya."
-    hide Sulthan with dissolve
+    hide Sulthan_sedih with dissolve
     scene black with fade
     pause (2.0)
 
     centered "Kondisi Sulthan semakin memburuk. Ia sering terbaring lemah di tempat tidur, tubuhnya semakin lemah dan sulit digerakkan. Di sisi lain, Dhika, Ayahnya, belum juga menunjukkan tindakan nyata. Semua yang dikatakannya kepada Sulthan hanyalah janji kosong."
 
-    scene RTengah with fade
+    scene kamar_sulthan with fade
     show Sulthan_sedih at left with dissolve
     show Dhika at right with dissolve
     Sulthan "Ayah… Ayah bilang akan melakukan sesuatu untuk menghentikan proyek itu… Sudah berbulan-bulan… Apa yang sudah Ayah lakukan?" 
@@ -532,7 +536,7 @@ label believe:
     Serena "Kenapa, Pak? Kenapa kita tidak melakukan apa pun? Kenapa kita biarkan Sulthan pergi seperti ini?"
     Dhika "Aku… Aku tidak tahu… Aku hanya ingin melindungi kalian… Aku pikir aku punya waktu lebih banyak…"
     hide Serena_sedihbanget
-    show Serena_marah
+    show Serena_marah at left
     Serena "Melindungi? Melindungi dari apa? Kau hanya melindungi dirimu sendiri, Dhika! Sulthan pergi karena kau terlalu takut untuk bertindak!"
     Dhika "Aku… Aku menyesal…"
     hide Serena_marah with dissolve
