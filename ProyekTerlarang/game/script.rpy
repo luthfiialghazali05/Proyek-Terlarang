@@ -1080,7 +1080,8 @@ label ending4:
     #ADEGAN SIDANG
     scene courthouse with fade
     show Dhika_sedih at left  with dissolve
-    show Jaksa at right with dissolve
+    show Jaksa at right with dissolve:
+        zoom 0.6
     show Hakim at center with dissolve
     Jaksa "Yang Mulia, terdakwa, Pak Dhika, tidak hanya lalai dalam tanggung jawabnya sebagai manajer proyek, tetapi juga menerima suap untuk mengabaikan pelanggaran pengelolaan limbah."
     Jaksa "Bukti transfer dana ilegal dan dokumen proyek menunjukkan bahwa terdakwa secara sadar menempatkan keuntungan pribadi di atas kepentingan masyarakat dan lingkungan."
@@ -1099,7 +1100,8 @@ label ending4:
     scene penjara with fade
     "Dhika dikurung di dalam penjara akibat tindak pidana korupsi yang dilakukannya"
     scene sel_penjara with fade
-    show Dhika_penjara with dissolve
+    show Dhika_penjara at center with dissolve:
+        zoom 1.5
     "Dhika sedih dan kecewa terhadap dirinya sendiri. Ia menyesal telah mencuri uang rakyat hanya karena ketamakannya"
     hide Dhika_penjara with dissolve
     
