@@ -463,10 +463,11 @@ label believe:
     hide Sulthan
     show Sulthan_senyumtipis at right
     Sulthan "Baiklah! Ayo kita pulang dan segera mencari bukti-buktinya!"
-    # tambahin musik
+    play audio "tema happy.mp3" volume 1.7
     hide Dhika with dissolve
     Sulthan "(Dalam hati sambil menuruni tangga) Aku tidak percaya semua ini terjadi. 10 menit lalu aku sangat ingin menyerah dan saat ini Aku merasa sangat bahagia karena dapat menemukan penyebab masalah ini dan akan menyelesaikannya. Aku ingin cepat-cepat pulang."
     hide Sulthan_senyumtipis with dissolve  
+    stop audio
     scene black with fade
     pause(2.0)
     scene RTengah with fade
@@ -513,7 +514,7 @@ label believe:
     show Sulthan_sedih at left with dissolve
     show Dhika at right with dissolve
     Sulthan "Ayah… Ayah bilang akan melakukan sesuatu untuk menghentikan proyek itu… Sudah berbulan-bulan… Apa yang sudah Ayah lakukan?" 
-    #tambahin musik
+    play audio "tema horror.mp3" volume 1.7
     hide Dhika
     show Dhika_sedih at right
     Dhika "Nak, Ayah masih mencari cara. Ini tidak mudah. Orang-orang di belakang proyek ini sangat kuat, dan Ayah harus berhati-hati."
@@ -525,6 +526,7 @@ label believe:
     Sulthan "(Dalam hati) Ah, percuma saja, aku hanya menghabiskan tenagaku untuk berdebat dengannya. Lebih baik aku tidur saja."
     hide Sulthan_sedih with dissolve
     hide Dhika_sedih with dissolve
+    stop audio
     scene black with fade
     pause (2.0)
 
