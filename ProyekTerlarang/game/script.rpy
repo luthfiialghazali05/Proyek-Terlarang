@@ -5,6 +5,21 @@
 
 init python:
     import random
+    credits = ('Project Manager', 'Thurfah Naura Qolbi (13223021)'), ('Game Designer', 'Rafi Ihsan A. (13223018)'), ('Game Designer', 'Amirul Akhyar H. (13223077)'), ('Script Writer', 'Haura Hafizha H. (18023058)'), ('Script Writer', 'M. Dzaki Farhansyah (13223034)'), ('Programmer', 'M. Luthfi Alghazali (13223097)'), ('Programmer', 'Johanna Sekar M. (13223061)'), ('Programmer', 'Gregory Salman A. (13223016)'), ('Graphic Design and UI/UX Designer', 'Zahra Faiza F. (18323002)'), ('Graphic Design and UI/UX Designer', 'Emir Rasyadi A. (18023027)'), ('Graphic Design and UI/UX Designer', 'Kiyo Lee Tiono (13223013)'), ('Sound Designer', 'Galih M. Syah Athaya (13223115)'), ('Quality Assurance', 'Lintang Suminar (18023015)'), ('Quality Assurance', 'Joyceline Audrey (18023038)'), ('Publication Specialist', 'Agita Trinanda Ilmi (13223003)')   
+    credits_s = "{size=80}Credits\n\n"
+    c1 = ''
+    for c in credits:
+        if not c1==c[0]:
+            credits_s += "\n{size=60}" + c[0] + "\n"
+        credits_s += "{size=40}" + c[1] + "\n"
+        c1=c[0]
+    credits_s += "\n{size=40}Engine\n{size=60}" + renpy.version() #Nevermind. It's all good. :P
+
+init:
+    image cred = Text(credits_s, font="font/ComicSansMS3.ttf", text_align=0.5) #use this if you want to use special fonts
+    #image cred = Text(credits_s, text_align=0.5)
+    image theend = Text("{size=80}The end\n{size=20}jangan di skip :) ", text_align=0.5)
+    image thanks = Text("{size=80}Thanks for Playing!", text_align=0.5)
 
 image main_menu_animated:
     "gui/main_menu/main_menu_1.png"
@@ -64,21 +79,26 @@ image Dhika = "Karakter/bapa mc.png"
 image Dhika_senyum = "Karakter/bapa mc senyum.png"
 image Dhika_sedih = "Karakter/bapa mc sedih.png"
 image Dhika_marah = "Karakter/bapa mc marah.png"
+image Dhika_telepon = "Karakter/bapa mc telepun.png"
+image Dhika_gelisah = "Karakter/bapa mc dagdigdug.png"
+image Dhika_penjara = "Karakter/bapa mc dipenjara.png"
 
 #RIKA SEKRETARIS
 image Rika = "Karakter/sekretaris mc.png"
 
 #POLISI
-image Polisi = "Karakter/mc.png" #GANTI
+image Polisi = "Karakter/polisi 1.png" 
+image Polisi_marah = "Karakter/polisi ngambeg.png" 
+image Polisi_kaget = "Karakter/polisi wuih kaget.png" 
 
 #JAKSA
-image Jaksa = "Karakter/mc.png" #GANTI
+image Jaksa = "Karakter/jaksa.png"
 
 #HAKIM
-image Hakim = "Karakter/mc.png" #GANTI
+image Hakim = "Karakter/hakim serius.png"
 
 #REPORTER
-image Reporter = "Karakter/mc.png" #GANTI
+image Reporter = "Karakter/reporter ganteng.png"
 
 # Image Buat Background
 image RTengah = "background/ruang tengah.JPG"
@@ -92,7 +112,13 @@ image proyek = "background/tempat proyek.JPG"
 image lab = "background/lab.JPG"
 image lobby = "background/lobby kantor.JPG"
 image kamar_sulthan = "background/Kamar Sulthan.JPG"
+image interogasi = "background/interogasi.JPG"
+image proyek_berjalan = "background/proyek berjalan.JPG"
+image sel_penjara = "background/sel penjara.JPG"
+image courthouse = "background/courthouse.JPG"
+image courthouse_spectator = "background/courthouse spectator.JPG"
 
+#Image buat benda
 image SuratIzin = "SuratIzinOperasi.png"
 image HP = "HP.png"
 
@@ -103,6 +129,7 @@ define flash = Fade(.05, 0, .75, color="#fff")
 
 #Scene 1
 label start:
+    jump ending3
     stop music
     scene white
     play audio "Petir.mp3" volume 1.5
@@ -593,7 +620,6 @@ label ending2:
     # ganti scene ke kantor polisi
     Sulthan "Apa aku akan benar-benar melaporkan ayahku? Biar gimana pun, dia adalah ayahku. Apakah aku terlalu gila?"
     Sulthan "..."
-    Sulthan "..." 
     Sulthan "Tidak..."
     Sulthan "Aku tidak gila sama sekali. Ayah jauh lebih gila karena membiarkanku sakit."
 
@@ -695,7 +721,7 @@ label ending2:
     Sulthan "Sudah cukup omong kosongmu! Ucapanmu bahkan tidak jauh beda dengan koruptor-koruptor negeri ini"
     hide Dhika
     show Dhika_marah at left
-    Dhika   "Lantang sekali bicaramu, Nak! Apakah begitu tata krama berbicara kepada ayahmu?"
+    Dhika   "Lancang sekali bicaramu, Nak! Apakah begitu tata krama berbicara kepada ayahmu?"
     Sulthan  "Tidak ada ayah yang ingin mencelakakan anaknya sendiri demi keuntungannya."
 
     hide Sulthan_marah
@@ -749,7 +775,7 @@ label bukti1:
     Saya sempat menemui dokter, dan beliau bilang penyakit saya mungkin disebabkan oleh air yang terkontaminasi limbah dari proyek itu. Saya mulai mencari tahu lebih jauh… saya sempat menganalisa kandungan air yang ada di lingkungan saya dan hasilnya menunjukkan bahwa air tersebut sudah terkontaminasi oleh timbal."
     Sulthan "Lebih parahnya lagi, saya… Saya menemukan proposal proyek besar tersebut di kantor ayah saya. Ayah saya... dia salah satu penandatangan proyek itu."
     hide Polisi
-    show Polisi at left #kaget
+    show Polisi_kaget at left
     Polisi "(Polisi mengangkat alis, terkejut, tapi tetap menjaga ketenangan.)\n Jadi, ayahmu terlibat dalam proyek ini?"
     Sulthan "(Menunduk, suara mulai bergetar)\n
     Saya tidak ingin mempercayainya, Pak. Tapi dokumen ini jelas menunjukkan bahwa ia tahu soal limbah itu. Saya tidak tahu harus bagaimana..."
@@ -788,7 +814,7 @@ label bukti0:
     Sulthan "Saya sempat menemui dokter, dan beliau bilang penyakit saya mungkin disebabkan oleh air yang terkontaminasi limbah dari proyek itu. Sejak saat itu, Saya mulai mencari tahu lebih jauh…"
     Sulthan "Lalu, saya… Saya menemukan proposal proyek besar tersebut di kantor ayah saya. Ayah saya... dia salah satu penandatangan proyek itu."
     hide Polisi
-    show Polisi at left #kaget
+    show Polisi_kaget at left
     Polisi "(Polisi mengangkat alis, terkejut, tapi tetap menjaga ketenangan.)\n Jadi, ayahmu terlibat dalam proyek ini?"
     Sulthan "(Menunduk, suara mulai bergetar)\n
     Saya tidak ingin mempercayainya, Pak. Tapi dokumen ini jelas menunjukkan bahwa ia tahu soal limbah itu. Saya tidak tahu harus bagaimana..."
@@ -805,7 +831,7 @@ label bukti0:
 
 label ending3:
     Sulthan "(Mengangguk pelan, matanya berkaca-kaca)\nSaya tahu, Pak. Tapi saya tidak bisa diam saja. Orang-orang di sekitar saya... mereka mungkin terkena dampak yang sama. Ini bukan hanya tentang saya."
-    hide Polisi#kaget
+    hide Polisi_kaget
     show Polisi at left #senyumtipis
     Polisi "(Sambil tersenyum tipis, nada suaranya meyakinkan)\nKamu melakukan hal yang benar. Kami akan mulai menyelidiki ini secepatnya. Apakah kamu bersedia bekerja sama lebih lanjut jika diperlukan?"
     hide Sulthan_sedih
@@ -821,10 +847,13 @@ label ending3:
 
     #ADEGAN DI RUMAH
     scene rumah with fade
-    show Dhika at left
-    Dhika "Sultan kemana ya, kok belum pulang-pulang. Apa lagi ada kerja kelompok ya makanya bisa lama"
+    show Dhika at left with dissolve
+    Dhika "Sulthan kemana ya, kok belum pulang-pulang. Apa lagi ada kerja kelompok ya makanya bisa lama"
+    play sound "TELEPON IPHONE SOUND EFFECT.mp3" volume 0.7
     "(Telepon berbunyi...)"
-    #play sound bunyi telepon
+    hide Dhika
+    show Dhika_telepon at left
+    stop sound
     Dhika "Halo, dengan Dhika disini. Dengan siapa dimana?"
     Polisi "(Dari telepon) Selamat sore. Apa benar dengan pak Dhika?"
     Dhika "Ya, benar."
@@ -832,17 +861,18 @@ label ending3:
     Dhika "Ada masalah apa ini pak? Mengapa saya tiba-tiba diperiksa seperti ini? saya tidak melakukan kesalahan apapun pak!"
     Polisi "(Dari telepon) Bapak penuhi saja panggilan ini. Kami akan jelaskan nanti. Saya harap bapak menerima panggilan ini dengan serius!"
     Dhika "Siap pak, saya segera kesana (mematikan telepon)."
-    hide Dhika with dissolve
+    hide Dhika_telepon with dissolve
 
     scene black with fade
     centered "Sesampainya di kantor polisi, Dhika dibawa ke ruang pemeriksaan dan diinterogasi"
 
     #ADEGAN INTEROGASI
     centered"Pak Dhika duduk di ruang interogasi. Wajahnya tetap tenang, meskipun pertanyaan tajam terus dilontarkan oleh polisi."
-    scene kantor_polisi with fade #interogasi
+    scene interogasi with fade
     show Dhika at left with dissolve
     show Polisi at right with dissolve
-    Polisi "Pak Dhika, Anda adalah salah satu penandatangan utama proyek besar ini. Bukti-bukti yang kami miliki menunjukkan adanya pelanggaran pengelolaan limbah yang menyebabkan kerusakan lingkungan. Kami juga memiliki laporan transaksi keuangan mencurigakan yang melibatkan Anda. Apa penjelasan Anda?"
+    Polisi "Pak Dhika, Anda adalah salah satu penandatangan utama proyek besar ini. Bukti-bukti yang kami miliki menunjukkan adanya pelanggaran pengelolaan limbah yang menyebabkan kerusakan lingkungan."
+    Polisi "Kami juga memiliki laporan transaksi keuangan mencurigakan yang melibatkan Anda. Apa penjelasan Anda?"
     hide Dhika
     show Dhika_senyum at left
     Dhika "(Tersenyum kecil, tetap tenang)\nSaya rasa Anda salah paham. Semua yang saya lakukan sesuai prosedur. Tanggung jawab utama ada pada pihak lain."
@@ -934,8 +964,9 @@ label ending3:
     hide Serena_sedihbanget with dissolve
 
     #ADEGAN SULTHAN LIAT PROYEK MASIH BERJALAN
-    scene proyek with fade
-    centered "Sulthan berdiri di depan proyek besar yang masih beroperasi. Truk-truk besar dan mesin berat terus bekerja. Ia merasa kecewa dan marah."
+    scene proyek_berjalan with fade
+    play sound "sound effect suasana proyek bangunan.mp3" volume 0.5
+    "Sulthan berdiri di depan proyek besar yang masih beroperasi. Truk-truk besar dan mesin berat terus bekerja. Ia merasa kecewa dan marah."
     show Sulthan_sedih
     Sulthan "..."
     "Proyek besar itu terus berjalan, memakan lebih banyak korban tanpa ada yang bisa menghentikannya."
@@ -973,13 +1004,13 @@ label ending4:
     Polisi "(Mendengarkan dengan serius)\nDan apa yang membuatmu yakin ini berkaitan dengan proyek tersebut?"
     Sulthan "(Sambil membuka map dan menunjukkan dokumen)\nSaya sempat menemui dokter, dan beliau bilang penyakit saya mungkin disebabkan karena proyek ini, karena dalam proposal ini diterangkan bahwa terdapat beberapa kerugian yang disebabkan proyek ini apabila proyek ini dijalankan."
     hide Polisi
-    show Polisi at left #kaget
+    show Polisi_kaget at left
     Polisi "(Polisi mengangkat alis, terkejut, tapi tetap menjaga ketenangan.)\n Jadi, ayahmu terlibat dalam proyek ini?"
     Sulthan "(Menunduk, suara mulai bergetar)\n
     Saya tidak ingin mempercayainya, Pak. Tapi dokumen ini jelas menunjukkan bahwa ia tahu soal limbah itu. Saya tidak tahu harus bagaimana..."
     Polisi "(Sambil melihat dokumen dan mencatat)\nIni langkah besar yang kamu ambil dengan melapor. Kami akan memeriksa dokumen ini. Tapi kamu harus tahu, melibatkan keluarga dalam masalah ini tidak akan mudah."
     Sulthan "(Mengangguk pelan, matanya berkaca-kaca)\nSaya tahu, Pak. Tapi saya tidak bisa diam saja. Orang-orang di sekitar saya... mereka mungkin terkena dampak yang sama. Ini bukan hanya tentang saya."
-    hide Polisi#kaget
+    hide Polisi_kaget
     show Polisi at left #senyumtipis
     Polisi "(Sambil tersenyum tipis, nada suaranya meyakinkan)\nKamu melakukan hal yang benar. Kami akan mulai menyelidiki ini secepatnya. Apakah kamu bersedia bekerja sama lebih lanjut jika diperlukan?"
     hide Sulthan_sedih
@@ -995,10 +1026,13 @@ label ending4:
 
     #ADEGAN DI RUMAH
     scene rumah with fade
-    show Dhika at left
-    Dhika "Sultan kemana ya, kok belum pulang-pulang. Apa lagi ada kerja kelompok ya makanya bisa lama"
+    show Dhika at left with dissolve
+    Dhika "Sulthan kemana ya, kok belum pulang-pulang. Apa lagi ada kerja kelompok ya makanya bisa lama"
+    play sound "TELEPON IPHONE SOUND EFFECT.mp3" volume 0.7
     "(Telepon berbunyi...)"
-    #play sound bunyi telepon
+    hide Dhika
+    show Dhika_telepon at left
+    stop sound
     Dhika "Halo, dengan Dhika disini. Dengan siapa dimana?"
     Polisi "(Dari telepon) Selamat sore. Apa benar dengan pak Dhika?"
     Dhika "Ya, benar."
@@ -1006,21 +1040,26 @@ label ending4:
     Dhika "Ada masalah apa ini pak? Mengapa saya tiba-tiba diperiksa seperti ini? saya tidak melakukan kesalahan apapun pak!"
     Polisi "(Dari telepon) Bapak penuhi saja panggilan ini. Kami akan jelaskan nanti. Saya harap bapak menerima panggilan ini dengan serius!"
     Dhika "Siap pak, saya segera kesana (mematikan telepon)."
-    hide Dhika
+    hide Dhika_telepon
 
     scene black with fade
     centered "Sesampainya di kantor polisi, Dhika dibawa ke ruang pemeriksaan dan diinterogasi"
 
     #ADEGAN INTEROGASI
-    scene kantor_polisi with fade #interogasi
+    scene interogasi with fade
     show Dhika at left with dissolve
     show Polisi at right with dissolve
-    Polisi "Pak Dhika, dokumen ini menunjukkan bahwa Anda menerima laporan tentang limbah beracun sebelum proyek dimulai. Tapi Anda tetap menandatangani persetujuan. Ada juga bukti bahwa beberapa dana yang seharusnya digunakan untuk pengelolaan limbah tidak sesuai penggunaannya. Bisa Anda jelaskan?"
+    Polisi "Pak Dhika, dokumen ini menunjukkan bahwa Anda menerima laporan tentang limbah beracun sebelum proyek dimulai. Tapi Anda tetap menandatangani persetujuan."
+    Polisi "Ada juga bukti bahwa beberapa dana yang seharusnya digunakan untuk pengelolaan limbah tidak sesuai penggunaannya. Bisa Anda jelaskan?"
     Dhika "(Suaranya bergetar)\nSaya tidak tahu apa-apa soal itu! Saya hanya bertanggung jawab pada bagian administrasi dan operasional. Bagian keuangan dan lingkungan yang mengatur alokasi dana."
     Polisi "(Sambil mengetuk meja dengan pena)\nTapi tanda tangan Anda ada di dokumen anggaran ini, Pak Dhika. Kami juga menemukan transfer mencurigakan ke rekening pribadi Anda dari salah satu subkontraktor proyek. Bagaimana Anda menjelaskan hal ini?"
-    Dhika "(Terlihat semakin panik\nItu hanya bonus... itu... itu bagian dari insentif proyek! Tidak ada yang ilegal!"
-    Polisi "(Menatap tajam)\nBonus? Atau Anda menutup mata terhadap pelanggaran lingkungan sebagai gantinya? Karena, dari semua bukti ini, tampaknya Anda menerima pembayaran untuk membiarkan pengelolaan limbah ini diabaikan."
     hide Dhika
+    show Dhika_gelisah at left
+    Dhika "(Terlihat semakin panik\nItu hanya bonus... itu... itu bagian dari insentif proyek! Tidak ada yang ilegal!"
+    hide Polisi
+    show Polisi_marah at right
+    Polisi "(Menatap tajam)\nBonus? Atau Anda menutup mata terhadap pelanggaran lingkungan sebagai gantinya? Karena, dari semua bukti ini, tampaknya Anda menerima pembayaran untuk membiarkan pengelolaan limbah ini diabaikan."
+    hide Dhika_gelisah
     show Dhika_marah at left
     Dhika "(Mulai kehilangan ketenangan, suaranya meninggi)\nSaya tidak tahu kalau ini akan berdampak separah ini! Saya hanya melakukan apa yang disuruh oleh atasan saya."
     Polisi "(Tenang namun tegas) \nPak Dhika, ini bukan hanya tentang Anda. Ini soal ratusan orang yang terkena dampak pencemaran ini. Dan dari semua bukti yang kami miliki, Anda terlibat dalam korupsi yang menyebabkan dampak besar pada kesehatan masyarakat dan lingkungan."
@@ -1028,33 +1067,42 @@ label ending4:
     show Dhika_sedih at left
     Dhika "..."
     hide Dhika_sedih
-    hide Polisi 
+    hide Polisi_marah
 
     scene black with fade
     centered "Kasus berlanjut hingga tahap persidangan"
     centered "Di ruang sidang, Pak Dhika berdiri sebagai terdakwa. Jaksa memaparkan argumennya."
 
     #ADEGAN SIDANG
-    scene kantor_polisi with fade #ruang sidang
+    scene courthouse with fade
     show Dhika_sedih at left  with dissolve
     show Jaksa at right with dissolve
     show Hakim at center with dissolve
     Jaksa "Yang Mulia, terdakwa, Pak Dhika, tidak hanya lalai dalam tanggung jawabnya sebagai manajer proyek, tetapi juga menerima suap untuk mengabaikan pelanggaran pengelolaan limbah. Bukti transfer dana ilegal dan dokumen proyek menunjukkan bahwa terdakwa secara sadar menempatkan keuntungan pribadi di atas kepentingan masyarakat dan lingkungan."
+    play sound "gavel-of-justice-124029.mp3"
     Hakim "(mengetuk palu)\nTerdakwa dinyatakan bersalah atas kelalaian yang menyebabkan pencemaran lingkungan, serta tindak pidana korupsi. Pengadilan menjatuhkan hukuman lima tahun penjara dan denda sebesar 1,5 miliar rupiah, yang sebagian akan diberikan sebagai kompensasi kepada korban pencemaran."
     hide Dhika_sedih
     hide Jaksa
     hide Hakim
-    scene kantor_polisi with fade #kursi penonton
+    scene courthouse_spectator with fade
     show Sulthan_senyumtipis with dissolve
     "Sulthan duduk di kursi penonton, menunduk mendengar putusan hakim. Ada rasa sakit bercampur kelegaan di wajahnya."
     hide Sulthan_senyumtipis with dissolve
+
+    #Adegan masuk Penjara
+    scene penjara with fade
+    "Dhika dikurung di dalam penjara akibat tindak pidana korupsi yang dilakukannya"
+    scene sel_penjara with fade
+    show Dhika_penjara with dissolve
+    "Dhika sedih dan kecewa terhadap dirinya sendiri. Ia menyesal telah mencuri uang rakyat hanya karena ketamakannya"
+    hide Dhika_penjara with dissolve
     
     scene proyek with fade
     show Sulthan at left with dissolve
     "Sulthan berdiri di depan lokasi proyek yang sekarang ditutup. Seorang reporter mendekatinya."
     show Reporter at right with dissolve
     Reporter "Sulthan, apa pendapat Anda tentang penutupan proyek ini dan pengungkapan kasus korupsi yang melibatkan beberapa pejabat?"
-    hide Sultan
+    hide Sulthan
     show Sulthan_senyumtipis at left
     Sulthan "(Menatap lokasi proyek yang kosong)\n
     Proyek ini seharusnya membawa manfaat, bukan kerusakan. Tapi karena keserakahan dan korupsi, semuanya hancur. Saya berharap ini menjadi pengingat bahwa uang tidak sebanding dengan nyawa dan lingkungan."
@@ -1074,5 +1122,28 @@ label ending4:
 
 label end_credit:
     scene black
-    "Ini Credit ya ges"
+    centered "Kamu telah menamatkan game ini"
+    centered "Korupsi menghancurkan keadilan dan merampas hak-hak rakyat.\nJangan membiarkan korupsi merusak masa depan generasi penerus kita."
+    call credits
     return
+
+label credits:
+    $ credits_speed = 25 #scrolling speed in seconds
+    scene black #replace this with a fancy background
+    with dissolve
+    show theend:
+        yanchor 0.5 ypos 0.5
+        xanchor 0.5 xpos 0.5
+    with dissolve
+    with Pause(1)
+    hide theend
+    show cred at Move((0.5, 3.3), (0.5, 0.0), credits_speed, repeat=False, bounce=False, xanchor="center", yanchor="bottom")
+    with Pause(credits_speed)
+    show thanks:
+        yanchor 0.5 ypos 0.5
+        xanchor 0.5 xpos 0.5
+    with dissolve
+    with Pause(1)
+    hide thanks
+    return
+

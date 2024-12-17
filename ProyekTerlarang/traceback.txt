@@ -1,38 +1,79 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-Compiling ATL code at game/script.rpy:407
-  File "game/script.rpy", line 403, in script
-    show HP with dissolve:
-Exception: Expression '0.5' is not an ATL transform, and so cannot be included in an ATL interpolation.
+While running game code:
+  File "game/script.rpy", line 1107, in script call
+    call credits
+  File "game/script.rpy", line 1121, in script
+    with Pause(credits_speed)
+Exception: Could not find font 'ComicSansMS3.ttf'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 403, in script
-    show HP with dissolve:
-  File "/Applications/renpy-8.3.2-sdk/renpy/ast.py", line 1111, in execute
-    show_imspec(self.imspec, atl=getattr(self, "atl", None))
-  File "/Applications/renpy-8.3.2-sdk/renpy/ast.py", line 1074, in show_imspec
-    renpy.config.show(name,
-  File "/Applications/renpy-8.3.2-sdk/renpy/exports/displayexports.py", line 503, in show
-    sls.add(layer, img, key, zorder, behind, at_list=at_list, name=name, atl=atl, default_transform=default_transform, transient=transient)
-  File "/Applications/renpy-8.3.2-sdk/renpy/display/scenelists.py", line 477, in add
-    thing.visit_all(lambda d : None)
-  File "/Applications/renpy-8.3.2-sdk/renpy/display/displayable.py", line 424, in visit_all
-    for d in self.visit():
-  File "/Applications/renpy-8.3.2-sdk/renpy/atl.py", line 816, in visit
-    block = self.compile()
-  File "/Applications/renpy-8.3.2-sdk/renpy/atl.py", line 723, in compile
-    block = self.atl.compile(self.context)
-  File "/Applications/renpy-8.3.2-sdk/renpy/atl.py", line 925, in compile
-    statements = [ i.compile(ctx) for i in self.statements ]
-  File "/Applications/renpy-8.3.2-sdk/renpy/atl.py", line 925, in <listcomp>
-    statements = [ i.compile(ctx) for i in self.statements ]
-  File "/Applications/renpy-8.3.2-sdk/renpy/atl.py", line 1292, in compile
-    raise Exception("Expression %r is not an ATL transform, and so cannot be included in an ATL interpolation." % expr)
-Exception: Expression '0.5' is not an ATL transform, and so cannot be included in an ATL interpolation.
+  File "game/script.rpy", line 1107, in script call
+    call credits
+  File "game/script.rpy", line 1121, in script
+    with Pause(credits_speed)
+  File "D:\renpy-8.3.3-sdk\renpy\ast.py", line 1361, in execute
+    renpy.exports.with_statement(trans, paired=paired)
+  File "D:\renpy-8.3.3-sdk\renpy\exports\statementexports.py", line 257, in with_statement
+    return renpy.game.interface.do_with(trans, paired, clear=clear)
+  File "D:\renpy-8.3.3-sdk\renpy\display\core.py", line 1578, in do_with
+    return self.interact(trans_pause=True,
+  File "D:\renpy-8.3.3-sdk\renpy\display\core.py", line 2215, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "D:\renpy-8.3.3-sdk\renpy\display\core.py", line 2879, in interact_core
+    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
+  File "D:\renpy-8.3.3-sdk\renpy\display\core.py", line 1381, in draw_screen
+    surftree = renpy.display.render.render_screen(
+  File "render.pyx", line 486, in renpy.display.render.render_screen
+  File "render.pyx", line 260, in renpy.display.render.render
+  File "D:\renpy-8.3.3-sdk\renpy\display\layout.py", line 900, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 260, in renpy.display.render.render
+  File "D:\renpy-8.3.3-sdk\renpy\display\transition.py", line 99, in render
+    return null_render(self, width, height, st, at)
+  File "D:\renpy-8.3.3-sdk\renpy\display\transition.py", line 70, in null_render
+    surf = renpy.display.render.render(d.new_widget,
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 260, in renpy.display.render.render
+  File "D:\renpy-8.3.3-sdk\renpy\display\layout.py", line 900, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 260, in renpy.display.render.render
+  File "D:\renpy-8.3.3-sdk\renpy\display\layout.py", line 900, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 260, in renpy.display.render.render
+  File "D:\renpy-8.3.3-sdk\renpy\display\transform.py", line 1056, in render
+    return RenderTransform(self).render(width, height, st, at)
+  File "accelerator.pyx", line 994, in renpy.display.accelerator.RenderTransform.render
+  File "accelerator.pyx", line 427, in renpy.display.accelerator.RenderTransform.render_child
+  File "render.pyx", line 260, in renpy.display.render.render
+  File "D:\renpy-8.3.3-sdk\renpy\display\motion.py", line 181, in render
+    child = render(self.child, width, height, st, at)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 260, in renpy.display.render.render
+  File "D:\renpy-8.3.3-sdk\renpy\display\image.py", line 513, in render
+    return wrap_render(self.target, width, height, st, at)
+  File "D:\renpy-8.3.3-sdk\renpy\display\image.py", line 316, in wrap_render
+    rend = render(child, w, h, st, at)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 260, in renpy.display.render.render
+  File "D:\renpy-8.3.3-sdk\renpy\text\text.py", line 2604, in render
+    virtual_layout = Layout(self, width, height, renders, drawable_res=False, size_only=True)
+  File "D:\renpy-8.3.3-sdk\renpy\text\text.py", line 770, in __init__
+    glyphs = ts.glyphs(s, self)
+  File "D:\renpy-8.3.3-sdk\renpy\text\text.py", line 340, in glyphs
+    fo = font.get_font(self.font, self.size, self.bold, self.italic, 0, self.antialias, self.vertical, self.hinting, layout.oversample, self.shaper, self.instance, self.axis)
+  File "D:\renpy-8.3.3-sdk\renpy\text\font.py", line 745, in get_font
+    face = load_face(fn, shaper)
+  File "D:\renpy-8.3.3-sdk\renpy\text\font.py", line 673, in load_face
+    raise Exception("Could not find font {0!r}.".format(orig_fn))
+Exception: Could not find font 'ComicSansMS3.ttf'.
 
-macOS-10.16-x86_64-i386-64bit x86_64
-Ren'Py 8.3.2.24090902
+Windows-10-10.0.19045 AMD64
+Ren'Py 8.3.3.24111502
 ProyekTerlarang 1.0
-Mon Dec 16 23:45:02 2024
+Tue Dec 17 10:14:29 2024
