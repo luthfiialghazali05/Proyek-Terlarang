@@ -129,7 +129,6 @@ define flash = Fade(.05, 0, .75, color="#fff")
 
 #Scene 1
 label start:
-    jump ending3
     stop music
     scene white
     play audio "Petir.mp3" volume 1.5
