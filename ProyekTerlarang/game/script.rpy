@@ -406,7 +406,7 @@ label investigate:
 
                     show Rika at right with dissolve
                     Sulthan "Selamat sore, Mbak. Aku mau jemput ayah. Ayah ada dimana, ya?"
-                    Serena "Pak Dhika lagi ada di ruang meeting. Kamu tunggu di ruangannya saja ya."
+                    Rika "Pak Dhika lagi ada di ruang meeting. Kamu tunggu di ruangannya saja ya."
                     Sulthan "Baik, Mbak."
                     hide Sulthan with dissolve
                     hide Rika
@@ -511,7 +511,7 @@ label believe:
     scene black with fade
     
     centered "Selang beberapa hari..."
-    scene RTengah with Fade
+    scene RTengah with fade
     show Sulthan_sedih with dissolve
     Sulthan "Kok gak ada info apa-apa dari Ayah. Kapan bakal dimulai, ya? Apa aku inisiatif ya buat mulai? Gak deh, aku nunggu Ayah aja."
     hide Sulthan_sedih with dissolve
@@ -623,6 +623,7 @@ label ending2:
     Sulthan "Aku tidak gila sama sekali. Ayah jauh lebih gila karena membiarkanku sakit."
 
     #ini polisi
+    show polisi at right with dissolve
     Polisi "Selamat sore anak muda! Apa yang bisa kami bantu?"
 
     Sulthan "Pak, saya ingin melaporkan sebuah kejahatan. Proyek besar di dekat rumah saya menyebabkan kerusakan lingkungan, dan saya yakin itu penyebab penyakit saya. Ayah saya terlibat dalam proyek itu."
@@ -643,6 +644,7 @@ label ending2:
     Sulthan "Terimakasih pak telah mendengarkanku!"
 
     hide Sulthan with dissolve
+    hide polisi with dissolve
     scene black with fade
 
     scene kantor_ayah with fade
@@ -1077,9 +1079,11 @@ label ending4:
     show Dhika_sedih at left  with dissolve
     show Jaksa at right with dissolve
     show Hakim at center with dissolve
-    Jaksa "Yang Mulia, terdakwa, Pak Dhika, tidak hanya lalai dalam tanggung jawabnya sebagai manajer proyek, tetapi juga menerima suap untuk mengabaikan pelanggaran pengelolaan limbah. Bukti transfer dana ilegal dan dokumen proyek menunjukkan bahwa terdakwa secara sadar menempatkan keuntungan pribadi di atas kepentingan masyarakat dan lingkungan."
+    Jaksa "Yang Mulia, terdakwa, Pak Dhika, tidak hanya lalai dalam tanggung jawabnya sebagai manajer proyek, tetapi juga menerima suap untuk mengabaikan pelanggaran pengelolaan limbah."
+    Jaksa "Bukti transfer dana ilegal dan dokumen proyek menunjukkan bahwa terdakwa secara sadar menempatkan keuntungan pribadi di atas kepentingan masyarakat dan lingkungan."
     play sound "gavel-of-justice-124029.mp3"
-    Hakim "(mengetuk palu)\nTerdakwa dinyatakan bersalah atas kelalaian yang menyebabkan pencemaran lingkungan, serta tindak pidana korupsi. Pengadilan menjatuhkan hukuman lima tahun penjara dan denda sebesar 1,5 miliar rupiah, yang sebagian akan diberikan sebagai kompensasi kepada korban pencemaran."
+    Hakim "(mengetuk palu)\nTerdakwa dinyatakan bersalah atas kelalaian yang menyebabkan pencemaran lingkungan, serta tindak pidana korupsi."
+    Hakim "Pengadilan menjatuhkan hukuman lima tahun penjara dan denda sebesar 1,5 miliar rupiah, yang sebagian akan diberikan sebagai kompensasi kepada korban pencemaran."
     hide Dhika_sedih
     hide Jaksa
     hide Hakim
