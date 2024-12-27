@@ -4,6 +4,9 @@
 ## them. Lines beginning with a single '#' mark are commented-out code, and you
 ## may want to uncomment them when appropriate.
 
+init python:
+    renpy.music.register_channel("effect", loop=False)
+
 
 ## Basics ######################################################################
 

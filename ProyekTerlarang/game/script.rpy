@@ -1,26 +1,6 @@
 ﻿# The script of the game goes in this file.
 
-# Declare characters used by this game. The color argument colorizes the
-# name of the character.
-
-init python:
-    import random
-    credits = ('Project Manager', 'Thurfah Naura Qolbi (13223021)'), ('Game Designer', 'Rafi Ihsan A. (13223018)'), ('Game Designer', 'Amirul Akhyar H. (13223077)'), ('Script Writer', 'Haura Hafizha H. (18023058)'), ('Script Writer', 'M. Dzaki Farhansyah (13223034)'), ('Programmer', 'M. Luthfi Alghazali (13223097)'), ('Programmer', 'Johanna Sekar M. (13223061)'), ('Programmer', 'Gregory Salman A. (13223016)'), ('Graphic Design and UI/UX Designer', 'Zahra Faiza F. (18323002)'), ('Graphic Design and UI/UX Designer', 'Emir Rasyadi A. (18023027)'), ('Graphic Design and UI/UX Designer', 'Kiyo Lee Tiono (13223013)'), ('Sound Designer', 'Galih M. Syah Athaya (13223115)'), ('Quality Assurance', 'Lintang Suminar (18023015)'), ('Quality Assurance', 'Joyceline Audrey (18023038)'), ('Publication Specialist', 'Agita Trinanda Ilmi (13223003)')   
-    credits_s = "{size=80}Credits\n\n"
-    c1 = ''
-    for c in credits:
-        if not c1==c[0]:
-            credits_s += "\n{size=60}" + c[0] + "\n"
-        credits_s += "{size=40}" + c[1] + "\n"
-        c1=c[0]
-    credits_s += "\n{size=40}Engine\n{size=60}" + renpy.version() #Nevermind. It's all good. :P
-
-init:
-    image cred = Text(credits_s, font="font/ComicSansMS3.ttf", text_align=0.5) #use this if you want to use special fonts
-    #image cred = Text(credits_s, text_align=0.5)
-    image theend = Text("{size=80}The end\n{size=20}jangan di skip :) ", text_align=0.5)
-    image thanks = Text("{size=80}Thanks for Playing!", text_align=0.5)
-
+# ini buat main menu joget2
 image main_menu_animated:
     "gui/main_menu/main_menu_1.png"
     pause 0.1
@@ -40,19 +20,142 @@ image main_menu_animated:
     pause 0.1
     repeat
 
+image strip_animated:
+    "images/strip/Strip1.png"
+    pause 0.5
+    "images/strip/Strip2.png"
+    pause 0.5
+    "images/strip/Strip3.png"
+    pause 0.5
+    "images/strip/Strip4.png"
+    pause 0.5
+    "images/strip/Strip5.png"
+    pause 0.5
+    "images/strip/Strip6.png"
+    pause 0.5
+    "images/strip/Strip7.png"
+    pause 0.5
+    "images/strip/Strip8.png"
 
-#ASSETS DECLARATION
+
+# ini buat credit
+init python:
+    import random
+    credits = ('Project Manager', 'Thurfah Naura Qolbi (13223021)'), ('Game Designer', 'Rafi Ihsan A. (13223018)'), ('Game Designer', 'Amirul Akhyar H. (13223077)'), ('Script Writer', 'Haura Hafizha H. (18023058)'), ('Script Writer', 'M. Dzaki Farhansyah (13223034)'), ('Programmer', 'M. Luthfi Alghazali (13223097)'), ('Programmer', 'Johanna Sekar M. (13223061)'), ('Programmer', 'Gregory Salman A. (13223016)'), ('Graphic Design and UI/UX Designer', 'Zahra Faiza F. (18323002)'), ('Graphic Design and UI/UX Designer', 'Emir Rasyadi A. (18023027)'), ('Graphic Design and UI/UX Designer', 'Kiyo Lee Tiono (13223013)'), ('Sound Designer', 'Galih M. Syah Athaya (13223115)'), ('Quality Assurance', 'Lintang Suminar (18023015)'), ('Quality Assurance', 'Joyceline Audrey (18023038)'), ('Publication Specialist', 'Agita Trinanda Ilmi (13223003)')   
+    credits_s = "{size=80}Credits\n\n"
+    c1 = ''
+    for c in credits:
+        if not c1==c[0]:
+            credits_s += "\n{size=60}" + c[0] + "\n"
+        credits_s += "{size=40}" + c[1] + "\n"
+        c1=c[0]
+    credits_s += "\n{size=40}Engine\n{size=60}" + renpy.version() #Nevermind. It's all good. :P
+
+init:
+    image cred = Text(credits_s, font="font/ComicSansMS3.ttf", text_align=0.5) #use this if you want to use special fonts
+    #image cred = Text(credits_s, text_align=0.5)
+    image theend = Text("{size=80}The end\n{size=20}jangan di skip :) ", text_align=0.5)
+    image thanks = Text("{size=80}Thanks for Playing!", text_align=0.5)
+
+
+# ini buat suara ketik
+init python:
+    def type_sound(event, interact=True, **kwargs):
+        if not interact:
+            return
+
+        # Set volume for the "Typing" channel
+        renpy.music.set_volume("effect", 1.0)
+
+        # List of typing sounds (make sure to replace these with actual files in your project)
+        sounds = 'audio/Typing/Typing.mp3'
+
+        if event == "show":  # When text is being typed
+            renpy.sound.play(sounds, channel="effect")
+
+        elif event in ["slow_done", "end"]:  # When text display finishes
+            renpy.sound.stop(channel="effect")  # Stop any sound on Typing channel
+
+
+
+# ini buat minigame
+transform alpha_dissolve:
+    alpha 0.0
+    linear 0.5 alpha 1.0
+    on hide:
+        linear 0.5 alpha 0
+    # This is to fade the bar in and out, and is only required once in your script
+
+init: ### just setting variables in advance so there are no undefined variable problems
+    $ kesempatan = 0
+
+screen caribukti():
+    modal True
+    frame:
+        xalign 0.5
+        yalign 0.9
+        xmaximum 300
+        ymaximum 100
+        at alpha_dissolve
+        bar value kesempatan range 10
+
+    # Image buttons
+    imagebutton auto "images/caribukti/Lampu_%s.png":
+        xpos 648 ypos 398 focus_mask True
+        hovered Play("sound", "audio/click.wav")
+        action [
+        Jump("lampu")]
+
+    imagebutton auto "images/caribukti/Komputer_%s.png":
+        xpos 859 ypos 430 focus_mask True
+        hovered Play("sound", "audio/click.wav")
+        action [
+        Jump("komputer")]
+
+    imagebutton auto "images/caribukti/Buku1_%s.png":
+        xpos 1303 ypos 161 focus_mask True
+        hovered Play("sound", "audio/click.wav")
+        action [
+        Jump("buku1")]
+
+    imagebutton auto "images/caribukti/Buku2_%s.png":
+        xpos 1470 ypos 187 focus_mask True
+        hovered Play("sound", "audio/click.wav")
+        action [
+        Jump("buku2")]
+
+    imagebutton auto "images/caribukti/Kertas_%s.png":
+        xpos 1521 ypos 417 focus_mask True
+        hovered Play("sound", "audio/click.wav")
+        action [
+        Jump("kertas")]
+
+    imagebutton auto "images/caribukti/Pot_%s.png":
+        xpos 1435 ypos 57 focus_mask True
+        hovered Play("sound", "audio/click.wav")
+        action [
+        Jump("pot")]
+
+    imagebutton auto "images/caribukti/Pensil_%s.png":
+        xpos 1128 ypos 553 focus_mask True
+        hovered Play("sound", "audio/click.wav")
+        action [
+        Jump("pensil")]
+
+
+#==========================================================================================
+# =================== ASSETS DECLARATION ========================
+#==========================================================================================
 # Definisi Character
-define Sulthan = Character("Sulthan")
-define Dhika = Character("Dhika")
-define Serena = Character("Serena")
-define Rika = Character("Mbak Rika") #sekretaris dhika
-define Polisi = Character("Polisi")
-define Jaksa = Character("Jaksa")
-define Hakim = Character("Hakim")
-define Reporter = Character("Reporter")
-define Telp = Character("...")
-
+define Sulthan = Character("Sulthan", callback=type_sound)
+define Dhika = Character("Dhika", callback=type_sound)
+define Serena = Character("Serena", callback=type_sound)
+define Rika = Character("Mbak Rika", callback=type_sound) #sekretaris dhika
+define Polisi = Character("Polisi", callback=type_sound)
+define Jaksa = Character("Jaksa", callback=type_sound)
+define Hakim = Character("Hakim", callback=type_sound)
+define Reporter = Character("Reporter", callback=type_sound)
+define Telp = Character("...", callback=type_sound)
 
 #TATA ATURAN INPUT MUSIK
 #play sound "judul" argumen // untuk play sound effect (sekali doang abistu mati)
@@ -117,22 +220,37 @@ image proyek_berjalan = "background/proyek berjalan.JPG"
 image sel_penjara = "background/sel penjara.JPG"
 image courthouse = "background/courthouse.JPG"
 image courthouse_spectator = "background/courthouse spectator.JPG"
+image BWhite = "background/BlankWhite.png"
 
 #Image buat benda
 image SuratIzin = "SuratIzinOperasi.png"
 image HP = "HP.png"
+image LogoITB = "logo_ITB.png"
+image LogoGame = "LogoGame.png"
+image Pass1 = "caribukti/Pass_1.png"
+image Pass2 = "caribukti/Pass_2.png"
 
 #==========================================================================================
+#==========================================================================================
+#==========================================================================================
+#==========================================================================================
+#==========================================================================================
 # The game starts here.
-define flash = Fade(.05, 0, .75, color="#fff")
 
-
-#Scene 1
 label start:
     stop music
-    scene white
+    scene BWhite with Fade(1, 0, 1, color="#fff")
+    show LogoITB with dissolve:
+        xalign 0.5
+        yalign 0.5
+        pause 1.0
+        linear 3 ypos 0.1 xpos 0.03 xzoom 0.1 yzoom 0.1
+
+    play music "tema dark.mp3" volume 0.5
+    pause(7.0)
+
+    scene black
     play audio "Petir.mp3" volume 1.5
-    play music "tema dark.mp3" volume 0.65
     scene black with Fade(0.5, 0, 1, color="#fff")
     
     # Teks pertama
@@ -148,10 +266,10 @@ label start:
 
     # Background flashings
     play audio "Petir.mp3" volume 1.5
-    play sound "Hujan.mp3" fadein 1 volume 0.6 loop
-    scene black with flash
+    play sound "Hujan.mp3" fadein 1 volume 0.3 loop
+    scene black with Fade(0.5, 0, 1, color="#fff")
 
-    show mc_gray at left 
+    show mc_gray at left
     with dissolve
     Sulthan "..."
 
@@ -159,11 +277,10 @@ label start:
 
     Sulthan "aku tidak tau lagi apa yang harus kulakukan. Tapi, apa yang menyebabkan aku seperti ini? setidaknya, aku ingin tau alasannya."
 
-    stop sound fadeout 0.1
     stop music fadeout 0.3
-    play sound "Hujan.mp3" volume 0.35 loop
-    play audio "door-knocking.mp3" volume 2
-
+    stop sound
+    play sound "Hujan.mp3" volume 0.1 loop
+    play effect "door-knocking.mp3" volume 2
 
     pause(2.7)
     scene kamar_sulthan with fade
@@ -175,6 +292,8 @@ label start:
         yalign 1.0
         linear 1 xpos 1.2
     with dissolve
+    stop effect
+
     Serena "Nak, Ibu boleh minta tolong kamu jemput Ayah ya di kantor, lagi hujan deras gini takut Ayah nggak bisa balik pakai bus."
 
     Sulthan "Boleh, Bu. Ayah udah dikabarin, kan?"
@@ -182,14 +301,15 @@ label start:
     Serena "Sudah, Nak."
 
     Sulthan "Baik bu, aku berangkat sekarang..."
+
     #di sini tambahin sesuatu yang nunjukin dia siap-siap trus nyalain mobil trus berangkats
     stop sound
     hide Sulthan with dissolve
     hide Serena with dissolve
     scene black with fade
-    play audio "mobilngeng.mp3" volume 1.0
+    play effect "mobilngeng.mp3" volume 1.0
     pause(8)
-
+    stop effect
     jump kantor
 
     return
@@ -230,13 +350,15 @@ label kantor: # scene 2
 
     "...Sulthan beranjak dan melihat sekeliling. Ia membaca pigura, plakat, dan apa saja yang ada di ruangan ayah. Entah mengapa Ia merasakan dorongan untuk membuka laci meja Ayah..."
     #play sound geser geser kertas, mainin kertas, buka laci
-    play audio "BukaLaci.mp3" volume 1
-    play audio "CariKertas.mp3" volume 1
+    play effect "BukaLaci.mp3" volume 1
+    play effect "CariKertas.mp3" volume 1
 
     #show sulthan bingung 
     "..."
+
     stop music
     play music "tema tegang.mp3" volume 1.0
+    stop effect
     Sulthan "huh..."
     Sulthan "dokumen Apa ini..?"
     Sulthan "Hmmm..."
@@ -247,7 +369,7 @@ label kantor: # scene 2
     
     #"Sebuah surat yang menunjukkan kop surat resmi bertuliskan 'Pemerintah Daerah' dan berjudul 'Surat Izin operasi'"
     Sulthan "Apa-apaan ini! Kenapa ayah menyimpan surat seperti ini?... Jangan-jangan..."
-    play audio "bombsin.mp3" volume 15
+    play audio "bombsin.mp3" volume 2
     hide Sulthan
     show Sulthan_marah:
         xalign 0.5
@@ -327,6 +449,7 @@ label investigate:
     scene black with fade
     centered "Investigation..."
 
+
     scene kantor_ayah with fade
 
     show Sulthan at right with dissolve
@@ -363,7 +486,7 @@ label investigate:
             scene black with fade
             play sound "keran.mp3" volume 1.7
             centered "Sulthan berdiri dari meja belajarnya, membuka pintu dan mulai berjalan menuruni anak tangga, berbelok ke kanan mengikuti lorong panjang yang mengarahkannya menuju dapur. Ia melihat sekelilingnya dan berjalan mendekati wastafel yang berada tidak jauh dari kompor di sebelah kirinya. Ia membuka keran secara perlahan, memastikan air tidak mengenai bagian tubuhnya. ia mengambil 1 botol air mentah dari keran rumahnya." 
-            
+            stop sound
 
             scene RTengah with fade
             show Sulthan at center with dissolve
@@ -382,6 +505,8 @@ label investigate:
 
             Sulthan "okeh gelas kimia sudah, tinggal celup deh"
             '...'
+            show strip_animated at right
+            pause(5)
             play audio "bombsin.mp3" volume 15
             'Warna strip test berubah dari kuning menjadi ungu'
 
@@ -418,40 +543,129 @@ label investigate:
                     Sulthan "..."
                     play sound "BukaLaci.mp3" volume 1
                     Sulthan "..."
-                    play audio "PaperGrab.mp3" volume 1.2
-                    show SuratIzin:
-                        xalign 0.5
-                        yalign 1.5
-                        linear 0.5 ypos 1.1
-                    Sulthan "Ah ini dia boi"
-                    Sulthan "saatnya difoto sebagai bukti tambahan"
-                    play sound "Camera.mp3" volume 10
-                    scene kantor_ayah with Fade(0.1, 0, 0.1, color="#fff")
-                    show Sulthan at left
-
-                    hide SuratIzin
-                    show HP with dissolve:
-                        zoom 2
-                        xalign 0.5
-                        yalign 0.5
-                        linear 2 ypos 0.45 xpos 0.9 xzoom 0.5 yzoom 0.5
-
-
-
-
-
-
-
-
+                    $ kesempatan = 10 + 1
+                    scene caribukti
                     
+                    label caribukti:
+                        if kesempatan == 0:
+                            jump kesempatanhabis
+                        else:
+                            $ kesempatan -=1
+                            call screen caribukti
+                        
+                    label buku1:
+                        Sulthan "Ah hanya buku-buku ayah, tidak ada yang spesial."
+                        Sulthan "Bukan disini berarti"
+                        jump caribukti
+                    
+                    label buku2:
+                        Sulthan "Hoo, apa ini ada robekan notes"
+                        show Pass1:
+                            zoom 0.7
+                            xalign 0.5
+                            yalign 1.5
+                            linear 2 xpos 0.5 ypos 0.5
 
-                    Sulthan "Dengan 2 bukti ini, aku yakin polisi akan mempercayai ucapanku!"
-                    Sulthan "Saatnya melaporkan ke kantor polisi"
-                    hide Sulthan
-                    scene black with fade
+                        Sulthan "password?"
+                        Sulthan "Hanya dua digit yang terlihat, pasti sisanya ada disekitar sini!"
+                        hide Pass1
+                        show Pass1:
+                            zoom 0.7
+                            xalign 0.5
+                            yalign 1
+                            linear 2 ypos 0.027 xpos 0.6 xzoom 0.5 yzoom 0.5
+                        
+                        jump caribukti
 
-                    jump ending4
+                    label pot:
+                        Sulthan "Duh tinggi sekali"
+                        Sulthan "..."
+                        Sulthan "Ada robekan notes!"
+                        show Pass2:
+                            zoom 0.7
+                            xalign 0.5
+                            yalign 1.5
+                            linear 2 xpos 0.5 ypos 0.5
+                        Sulthan "password?"
+                        Sulthan "Hanya dua digit yang terlihat, pasti sisanya ada disekitar sini!"
+                        hide Pass2
+                        show Pass2:
+                            zoom 0.7
+                            xalign 0.5
+                            yalign 1
+                            linear 2 ypos 0.027 xpos 0.555 xzoom 0.5 yzoom 0.5
 
+                        jump caribukti
+                    
+                    label kertas:
+                        Sulthan 'Mungkin ada di tumpukan kertas ini'
+                        Sulthan '...'
+                        Sulthan '...'
+                        Sulthan 'Sial sudah tidak ada!'
+                        Sulthan 'Aku yakin versi digitalnya masih ada di komputer ayah'
+                        jump caribukti
+
+                    label lampu:
+                        Sulthan 'ya ini lampu'
+                        Sulthan 'Berharap apa mencari disini'
+                        jump caribukti
+                    
+                    label pensil:
+                        Sulthan "???"
+                        Sulthan "Ngapain aku mencari disini"
+                        Sulthan "Aneh!"
+                        jump caribukti
+
+                    label komputer:
+                        $ password = renpy.input('Password?')
+                        $ password = password.strip()
+                        if password == "5691":
+                            'password benar'
+                            Sulthan 'oke bagus! Saatnya mencari file-nya'
+                            Sulthan '...'
+                            Sulthan '...'
+                            
+                            Sulthan "Ah ini dia boi"
+                            Sulthan "saatnya difoto sebagai bukti tambahan"
+                            play sound "Camera.mp3" volume 10
+                            scene kantor_ayah with Fade(0.1, 0, 0.1, color="#fff")
+                            show Sulthan at left
+
+                            hide SuratIzin
+                            show HP with dissolve:
+                                zoom 2
+                                xalign 0.5
+                                yalign 0.5
+                                linear 2 ypos 0.45 xpos 0.9 xzoom 0.5 yzoom 0.5
+
+                            Sulthan "Dengan 2 bukti ini, aku yakin polisi akan mempercayai ucapanku!"
+                            Sulthan "Saatnya melaporkan ke kantor polisi"
+                            hide Sulthan
+                            scene black with fade
+
+                            jump ending4
+
+                        else:
+                            'password salah'
+                            jump caribukti
+                    
+                    label kesempatanhabis:
+                        Telp "lagi ngapain kamu Sulthan"
+                        Sulthan "eh Ayah"
+                        show Dhika at left with dissolve
+
+                        Sulthan "Ga lagi ngapa ngapain kok cuman liat liat aja."
+                        Dhika "Kenapa kok tiba-tiba ke kantor?"
+                        Sulthan "Engga cuman pengen liat Ayah aja"
+                        Sulthan "Udah yah dadah"
+                        hide Sulthan
+                        Dhika "Hmm ada yang aneh"
+                        hide Dhika
+                        scene black
+
+                        jump bukti1
+                        
+                        
 
                 "Lapor Polisi":
                     Sulthan "Rasanya sudah cukup deh bukti ini"
