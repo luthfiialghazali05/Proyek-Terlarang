@@ -22,19 +22,19 @@ image main_menu_animated:
 
 image strip_animated:
     "images/strip/Strip1.png"
-    pause 0.5
+    pause 0.3
     "images/strip/Strip2.png"
-    pause 0.5
+    pause 0.07
     "images/strip/Strip3.png"
-    pause 0.5
+    pause 0.07
     "images/strip/Strip4.png"
-    pause 0.5
+    pause 0.07
     "images/strip/Strip5.png"
-    pause 0.5
+    pause 0.07
     "images/strip/Strip6.png"
-    pause 0.5
+    pause 0.07
     "images/strip/Strip7.png"
-    pause 0.5
+    pause 0.07
     "images/strip/Strip8.png"
 
 
@@ -91,6 +91,8 @@ init: ### just setting variables in advance so there are no undefined variable p
 
 screen caribukti():
     modal True
+    text "{color=#000000}{b}Bantu Sulthan mencari Dokumen tersebut!{/b}" xpos 0.05 ypos 0.05
+
     frame:
         xalign 0.5
         yalign 0.9
@@ -239,35 +241,47 @@ image Pass2 = "caribukti/Pass_2.png"
 
 label start:
     stop music
-    scene BWhite with Fade(1, 0, 1, color="#fff")
+    scene black
     show LogoITB with dissolve:
         xalign 0.5
         yalign 0.5
         pause 1.0
-        linear 3 ypos 0.1 xpos 0.03 xzoom 0.1 yzoom 0.1
+        linear 2 ypos 0.5 xpos 0.35 xzoom 0.6 yzoom 0.6
+    
+    pause(3)
+    show LogoGame with dissolve:
+        zoom 0.4
+        xalign 0.5
+        yalign 0.5
+        pause 1.0
+        linear 2 ypos 0.5 xpos 0.6 xzoom 0.6 yzoom 0.6
 
     play music "tema dark.mp3" volume 0.5
-    pause(7.0)
+    pause(3)
+    hide LogoGame
+    hide LogoITB
+    centered "{color=#FF0000}{b}DISCLAIMER:{/color}{/b}\n Semua konten, karakter, nama, tempat, dan alur cerita dalam gim ini sepenuhnya bersifat fiksi. Kesamaan dengan kejadian, individu, atau lokasi di dunia nyata hanyalah kebetulan belaka. Gim ini tidak dimaksudkan untuk mewakili atau mencerminkan pandangan, kepercayaan, atau peristiwa apa pun di dunia nyata."
+
 
     scene black
     play audio "Petir.mp3" volume 1.5
     scene black with Fade(0.5, 0, 1, color="#fff")
     
-    # Teks pertama
     centered "Hujan deras menyelimuti seluruh wilayah kota. Angin berhembus kencang dan langit begitu gelap."
 
-    # Teks kedua
     centered "Sulthan duduk di meja belajarnya sembari menatap keluar melalui jendela kamarnya."
 
     # Teks ketiga
     centered "Tatapan kosong tanpa harapan terpampang di raut wajahnya setelah tiga minggu lalu dokter mendiagnosanya menderita penyakit kulit langka yang mengharuskannya menjalani pengobatan setiap minggunya." 
     
-    centered "Semakin hari, kondisinya semakin memburuk. Harapan hidup menipis karena luka bakar telah menyelimuti hampir seluruh bagian tubuhnya, menyisakan bagian wajah yang masih bersih tanpa bekas."
+    centered "Semakin hari, kondisinya semakin memburuk."
+    centered "Harapan hidup {p=0.5}{cps=16}semakin{/cps}{cps=9}{color=#FF0000} menipis{/color}{/cps}."
+    centered "Luka bakar telah menyelimuti hampir seluruh bagian tubuhnya, menyisakan bagian wajah yang masih bersih tanpa bekas."
 
     # Background flashings
     play audio "Petir.mp3" volume 1.5
     play sound "Hujan.mp3" fadein 1 volume 0.3 loop
-    scene black with Fade(0.5, 0, 1, color="#fff")
+    scene black with Fade(0.5, 0, 0.5, color="#fff")
 
     show mc_gray at left
     with dissolve
@@ -275,7 +289,9 @@ label start:
 
     Sulthan "Apakah hidupku akan berakhir seperti ini?"
 
-    Sulthan "aku tidak tau lagi apa yang harus kulakukan. Tapi, apa yang menyebabkan aku seperti ini? setidaknya, aku ingin tau alasannya."
+    Sulthan "Aku tidak tau lagi apa yang harus kulakukan. Tapi..."
+    Sulthan "apa yang menyebabkan aku seperti ini?" 
+    Sulthan "Setidaknya, aku ingin tau alasannya."
 
     stop music fadeout 0.3
     stop sound
@@ -294,13 +310,13 @@ label start:
     with dissolve
     stop effect
 
-    Serena "Nak, Ibu boleh minta tolong kamu jemput Ayah ya di kantor, lagi hujan deras gini takut Ayah nggak bisa balik pakai bus."
+    Serena "Nak, Ibu boleh minta tolong kamu jemput Ayah di kantor. Lagi hujan deras gini, takut Ayah nggak bisa balik pakai bus."
 
     Sulthan "Boleh, Bu. Ayah udah dikabarin, kan?"
 
     Serena "Sudah, Nak."
 
-    Sulthan "Baik bu, aku berangkat sekarang..."
+    Sulthan "Baik, Bu. Aku berangkat sekarang..."
 
     #di sini tambahin sesuatu yang nunjukin dia siap-siap trus nyalain mobil trus berangkats
     stop sound
@@ -333,7 +349,7 @@ label kantor: # scene 2
 
     Rika "Pak Dhika masih ada rapat bersama kliennya. Kamu mending tunggu aja di ruang kerjanya ya..."
 
-    Sulthan "ohh, baiklah. Terima kasih mbak, aku tunggu di ruangan Ayah deh"
+    Sulthan "Ohh, baiklah. Terima kasih, Mbak. Aku tunggu di ruangan Ayah deh."
 
     hide Sulthan with dissolve
     hide Rika 
@@ -343,13 +359,16 @@ label kantor: # scene 2
     scene kantor_ayah with fade
     show Sulthan with dissolve
     Sulthan "Huft..."
-    Sulthan "(dalam hati) Kenapa aku harus hidup seperti ini? Apakah aku akan memiliki penyakit ini seumur hidupku?"
-    Sulthan "(dalam hati) Apakah benar kata orang-orang, bahwa penyakit ini... adalah efek dari proyek tambang yang baru beroperasi itu...."
-    # kasih jeda kalo bisa sulthan meren dulu trus melek lagi
-    Sulthan "lama banget ini ayah meeting...liat liat ruangan ayah ahh"
+    Sulthan "{color=#D3D3D3}Kenapa aku harus hidup seperti ini? Apakah aku akan memiliki penyakit ini seumur hidupku?"
+    Sulthan "{color=#D3D3D3}Apakah benar kata orang-orang, bahwa penyakit ini..."
+    Sulthan "{color=#D3D3D3}efek dari proyek tambang yang baru beroperasi itu."
+    Sulthan "Hmmm"
+    Sulthan "..."
+    Sulthan "Lama banget ini Ayah meeting."
+    Sulthan "Liat-liat ruangan Ayah ahh...."
 
     "...Sulthan beranjak dan melihat sekeliling. Ia membaca pigura, plakat, dan apa saja yang ada di ruangan ayah. Entah mengapa Ia merasakan dorongan untuk membuka laci meja Ayah..."
-    #play sound geser geser kertas, mainin kertas, buka laci
+
     play effect "BukaLaci.mp3" volume 1
     play effect "CariKertas.mp3" volume 1
 
@@ -359,10 +378,12 @@ label kantor: # scene 2
     stop music
     play music "tema tegang.mp3" volume 1.0
     stop effect
-    Sulthan "huh..."
-    Sulthan "dokumen Apa ini..?"
+    Sulthan "Huh..."
+    Sulthan "Dokumen Apa ini..?"
     Sulthan "Hmmm..."
-    Sulthan "...Teguran Kementrian Kesehatan.....Operasi tambang daerah XXXXXX mengeluarkan limbah cair berbahaya....Efek samping yang dirasakan manusia yang terpapar limbah tersebut adalah.....Luka...Bakar...Sekujur...Tubuh......."
+    Sulthan "...Teguran Kementrian Kesehatan.....Operasi Tambang Daerah XXXXXX mengeluarkan limbah cair berbahaya..."
+    Sulthan "Efek samping pada manusia :"
+    Sulthan "{color=#FF0000}{cps=8}Luka Bakar Sekujur Tubuh."
     Sulthan "tch.... Jadi benar, proyek sialan itu yang menjadi penyebab penyakitku ini. Memang dasar pengusaha rakus keparat"
     
     "Bersama dengan teguran Kementrian Kesehatan yang terdapat dalam dokumen tersegel, bagaikan disembunyikan, ada surat lain yang tampak resmi..."
@@ -382,8 +403,9 @@ label kantor: # scene 2
         linear 0.5 ypos 1.1
 
 
-    Sulthan "DISETUJUI OLEH AYAH?!!"
-    Sulthan "HAH??! Bagaimana bisa? Ternyata selama ini..."
+    Sulthan "DISETUJUI OLEH AYAH?!!" with vpunch
+    Sulthan "HAH??! Bagaimana bisa?"
+    Sulthan "Ternyata selama ini..."
     hide SuratIzin with dissolve
     play sound "PaperGrab.mp3" volume 1.2
     "Mata Sulthan berkaca-kaca, tubuhnya gemetar melihat tanda tangan Ayahnya di lembar persetujuan surat izin operasi tambang itu. Proyek besar yang selama ini berada di dekat rumahnya. Proyek besar yang menyebabkan ia mengidap penyakit serius."
@@ -456,8 +478,8 @@ label investigate:
     Sulthan "Kayaknya ada suara langkah kaki mendekat. Aku harus bersikap tidak tahu apa-apa."
 
     show Dhika at left with dissolve
-    Dhika "Eh, kamu sudah disini (melihat Sulthan yang lesu), kamu lagi kenapa nak?"
-    Sulthan "Ga kenapa-napa, langsung pulang aja yaa yah. Aku udah lemes banget."
+    Dhika "Eh, kamu sudah disini (melihat Sulthan yang lesu), kamu lagi kenapa Nak?"
+    Sulthan "Ga kenapa-napa, langsung pulang aja yaa Yah. Aku udah lemes banget."
     hide Dhika with dissolve
     hide Sulthan with dissolve
 
@@ -466,26 +488,31 @@ label investigate:
     scene RTengah with fade
 
     show Sulthan at left with dissolve
-    Sulthan  "Kenapa ayah bisa setega ini, apa yang ayah pikirkan ketika mengambil keputusan ini? Kenapa malah aku yang kena imbasnya? Apa yang harus aku lakukan sekarang? Apakah semua yang ku lihat benar-benar kenyataannya?"
-    Sulthan "Tidak, aku tidak boleh kalah dengan keadaan ini. Kalau ayah saja bisa melakukan ini, aku juga bisa. dia harus merasakan apa yang aku rasakan."
-    Sulthan "Bagaimana aku memulainya? Sepertinya aku harus menyusun rencana dulu. Hmm, kira-kira apa ya?"
+    Sulthan "Kenapa Ayah bisa setega ini, apa yang Ayah pikirkan ketika mengambil keputusan ini?"
+    Sulthan "Kenapa malah aku yang kena imbasnya?"
+    Sulthan "Apa yang harus aku lakukan sekarang?"
+    Sulthan "Tidak."
+    Sulthan "Tidak, Aku tidak boleh kalah dengan keadaan ini. Kalau Ayah saja bisa melakukan ini, Aku juga bisa. Dia harus merasakan apa yang Aku rasakan!"
+    Sulthan "Bagaimana Aku memulainya?"
+    Sulthan "Sepertinya aku harus menyusun rencana dulu."
+    Sulthan "Hmm, kira-kira apa ya?"
 
     menu :
-        "Kamu ingin melakukan investigasi, Apa yang akan kamu lakukan setelah ini?"
-        "Cek sample air di rumah":
-            Sulthan "Aha! aku bisa mulai dengan mengambil sampel air dari rumah ini. Kayaknya aku bisa pakai lab di sekolah buat meneliti ini pas jam istirahat. Aku bisa ngambil air dari wastafel di dapur."
+        "Kamu ingin melakukan investigasi. Apa yang akan kamu lakukan setelah ini?"
+        "Cek sampel air di rumah":
+            Sulthan "Aha! Aku bisa mulai dengan mengambil sampel air dari rumah ini. Kayaknya Aku bisa pakai lab di sekolah buat meneliti ini saat jam istirahat. Aku bisa ngambil air dari wastafel di dapur."
 
             hide Sulthan with dissolve
             play audio "BukaLaci.mp3" volume 1.7
             play sound "nulis.mp3" volume 5.0 loop
             "Sulthan mengambil alat tulis dan kertas dari laci mejanya, menuliskan semua rencana yang berjalan di pikirannya, memastikan semua skenario berjalan sempurna."
-            "Tidak peduli dengan apa yang akan dihadapinya. yang ia inginkan hanya sebuah pembalasan yang sempurna. Sulthan mulai menyusun rencana yang sempurna."
+            "Tidak peduli dengan apa yang akan dihadapinya. yang ia inginkan hanya sebuah pembalasan yang sempurna. Sulthan mulai menyusun rencana yang matang."
             stop sound 
             show Sulthan at center with dissolve
-            Sulthan "Baiklah, aku akan mulai dari mengumpulkan sampel dari air di rumahku."
+            Sulthan "Baiklah, Aku akan mulai dari mengumpulkan sampel dari air di rumahku."
             scene black with fade
             play sound "keran.mp3" volume 1.7
-            centered "Sulthan berdiri dari meja belajarnya, membuka pintu dan mulai berjalan menuruni anak tangga, berbelok ke kanan mengikuti lorong panjang yang mengarahkannya menuju dapur. Ia melihat sekelilingnya dan berjalan mendekati wastafel yang berada tidak jauh dari kompor di sebelah kirinya. Ia membuka keran secara perlahan, memastikan air tidak mengenai bagian tubuhnya. ia mengambil 1 botol air mentah dari keran rumahnya." 
+            centered "Sulthan berdiri dari meja belajarnya, bergerak menuju dapur. Ia melihat sekelilingnya dan berjalan mendekati wastafel yang berada tidak jauh dari kompor di sebelah kirinya. Ia membuka keran secara perlahan, memastikan air tidak mengenai bagian tubuhnya. Ia mengambil 1 botol air mentah dari keran rumahnya." 
             stop sound
 
             scene RTengah with fade
@@ -494,40 +521,45 @@ label investigate:
             Sulthan "Saatnya tidur sebelum Ibu marah."
 
             scene black with fade
-            "keesokan harinya, di lab sekolah..."
+            centered "Keesokan harinya, di lab sekolah..."
 
             scene lab with fade
             show Sulthan with dissolve
-            Sulthan "Pertama aku bisa mengambil strip test reagen buat mengecek kandungan airnya. Dimana strip tes nya. Kayaknya ada di rak alat-alat kimia."
+            Sulthan "Pertama aku bisa mengambil strip test reagen buat mengecek kandungan airnya."
             Sulthan "Aku tinggal masukin strip tesnya ke air. Eh, aku butuh gelas kimia sepertinya."
+            hide Sulthan with dissolve
             Sulthan "..."
             Sulthan "..."
+            show Sulthan with dissolve
 
-            Sulthan "okeh gelas kimia sudah, tinggal celup deh"
+            Sulthan "Okeh gelas kimia sudah, tinggal celup deh"
             '...'
             show strip_animated at right
-            pause(5)
-            play audio "bombsin.mp3" volume 15
+            pause(0.7)
+            play audio "bombsin.mp3" volume 2
+            pause(0.3)
             'Warna strip test berubah dari kuning menjadi ungu'
 
             Sulthan 'Sudah kuduga, memang air ini terkontaminasi. Kira-kira mengandung apa ya?'
-            Sulthan '(membuka google)'
-            Sulthan 'WAY, Timbal konsentrasi tinggi di dalam airnya! Pantas saja tubuhku bisa jadi gini. Ayah memang sialan!'
+            Sulthan "(membuka google)"
+            Sulthan 'WAY!'
+            Sulthan 'Timbal konsentrasi tinggi di dalam airnya! Pantas saja tubuhku bisa jadi gini. Ayah memang sialan!'
 
             Sulthan 'Hmmm, oke satu bukti sudah. Tapi apakah bukti ini cukup kuat untuk membuktikan ayah terlibat?'
             Sulthan "Harus apalagi ya selanjutnya?"
 
             menu:
                 "Cek kembali dokumen resmi semalam":
-                    Sulthan "AH IYA, DOKUMEN ITU! Aku bisa kembali ke kantor ayah dan memfoto dokumen itu. Baiklah, akan kulakukan setelah pulang sekolah."
+                    Sulthan "AH IYA, DOKUMEN ITU!"
+                    Sulthan "Aku bisa kembali ke kantor ayah dan memfoto dokumen itu. Baiklah, akan kulakukan setelah pulang sekolah."
                     hide Sulthan with dissolve
 
                     scene black with fade
-                    centered "Selesai sekolah Sulthan langsung ke kantor ayahnya"
+                    centered "Selesai sekolah Sulthan langsung menuju kantor ayahnya"
 
                     scene lobby with fade
                     show Sulthan at left with dissolve
-                    Sulthan "(dalam hati) Aku ngeboong apa ya biar bisa masuk ke kantor ayah?"
+                    Sulthan "(dalam hati) Aku ngeboong apa ya biar bisa masuk ke kantor Ayah?"
 
                     show Rika at right with dissolve
                     Sulthan "Selamat sore, Mbak. Aku mau jemput ayah. Ayah ada dimana, ya?"
@@ -543,6 +575,9 @@ label investigate:
                     Sulthan "..."
                     play sound "BukaLaci.mp3" volume 1
                     Sulthan "..."
+                    Sulthan "Waduh!"
+                    Sulthan "Sudah tidak ada!"
+                    Sulthan "Aku yakin surat itu masih ada disekitar sini."
                     $ kesempatan = 10 + 1
                     scene caribukti
                     
@@ -555,18 +590,19 @@ label investigate:
                         
                     label buku1:
                         Sulthan "Ah hanya buku-buku ayah, tidak ada yang spesial."
-                        Sulthan "Bukan disini berarti"
+                        Sulthan "Bukan disini berarti."
                         jump caribukti
                     
                     label buku2:
-                        Sulthan "Hoo, apa ini ada robekan notes"
+                        Sulthan "Hoo, apa ini?"
+                        Sulthan "Ada robekan notes!"
                         show Pass1:
                             zoom 0.7
                             xalign 0.5
                             yalign 1.5
                             linear 2 xpos 0.5 ypos 0.5
 
-                        Sulthan "password?"
+                        Sulthan "Password?"
                         Sulthan "Hanya dua digit yang terlihat, pasti sisanya ada disekitar sini!"
                         hide Pass1
                         show Pass1:
@@ -586,7 +622,7 @@ label investigate:
                             xalign 0.5
                             yalign 1.5
                             linear 2 xpos 0.5 ypos 0.5
-                        Sulthan "password?"
+                        Sulthan "Password?"
                         Sulthan "Hanya dua digit yang terlihat, pasti sisanya ada disekitar sini!"
                         hide Pass2
                         show Pass2:
@@ -598,16 +634,16 @@ label investigate:
                         jump caribukti
                     
                     label kertas:
-                        Sulthan 'Mungkin ada di tumpukan kertas ini'
+                        Sulthan 'Mungkin ada di tumpukan kertas ini.'
                         Sulthan '...'
                         Sulthan '...'
                         Sulthan 'Sial sudah tidak ada!'
-                        Sulthan 'Aku yakin versi digitalnya masih ada di komputer ayah'
+                        Sulthan 'Aku yakin versi digitalnya masih ada di komputer ayah.'
                         jump caribukti
 
                     label lampu:
-                        Sulthan 'ya ini lampu'
-                        Sulthan 'Berharap apa mencari disini'
+                        Sulthan 'Ya ini lampu.'
+                        Sulthan 'Berharap apa mencari disini.'
                         jump caribukti
                     
                     label pensil:
@@ -620,13 +656,14 @@ label investigate:
                         $ password = renpy.input('Password?')
                         $ password = password.strip()
                         if password == "5691":
-                            'password benar'
-                            Sulthan 'oke bagus! Saatnya mencari file-nya'
+                            'Password Benar'
+                            show Sulthan at left with dissolve
+                            Sulthan 'Oke bagus! Saatnya mencari file-nya'
                             Sulthan '...'
                             Sulthan '...'
                             
-                            Sulthan "Ah ini dia boi"
-                            Sulthan "saatnya difoto sebagai bukti tambahan"
+                            Sulthan "Ah ini dia boi!"
+                            Sulthan "Saatnya difoto sebagai bukti tambahan."
                             play sound "Camera.mp3" volume 10
                             scene kantor_ayah with Fade(0.1, 0, 0.1, color="#fff")
                             show Sulthan at left
@@ -647,18 +684,24 @@ label investigate:
 
                         else:
                             'password salah'
+                            Sulthan "Sial! Passwordnya apa ya?"
                             jump caribukti
                     
                     label kesempatanhabis:
-                        Telp "lagi ngapain kamu Sulthan"
-                        Sulthan "eh Ayah"
-                        show Dhika at left with dissolve
+                        Telp "Lagi ngapain kamu Sulthan"
+                        show Sulthan at left with dissolve
+                        Sulthan "Eh Ayah."
+                        show Dhika:
+                            xalign 1.5
+                            yalign 1.0
+                            linear 1 xpos 1.3
 
                         Sulthan "Ga lagi ngapa ngapain kok cuman liat liat aja."
                         Dhika "Kenapa kok tiba-tiba ke kantor?"
-                        Sulthan "Engga cuman pengen liat Ayah aja"
-                        Sulthan "Udah yah dadah"
-                        hide Sulthan
+                        Sulthan "Engga cuman pengen liat Ayah aja-"
+                        Sulthan "Udah yah dadah."
+                        hide Sulthan with dissolve
+                        "Sulthan bergegas meninggalkan ruang kantor."
                         Dhika "Hmm ada yang aneh"
                         hide Dhika
                         scene black
