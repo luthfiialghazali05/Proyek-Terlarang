@@ -312,6 +312,8 @@ screen navigation():
         textbutton _("Option") action ShowMenu("preferences")
         #imagebutton auto "gui/mm_options_%s.png" xpos  1299 ypos 749 focus_mask True action ShowMenu("preferences")
 
+        textbutton _("Credits") action Start("credits")
+
         if _in_replay:
 
             textbutton _("End Replay") action EndReplay(confirm=True)

@@ -41,7 +41,7 @@ image strip_animated:
 # ini buat credit
 init python:
     import random
-    credits = ('Project Manager', 'Thurfah Naura Qolbi (13223021)'), ('Game Designer', 'Rafi Ihsan A. (13223018)'), ('Game Designer', 'Amirul Akhyar H. (13223077)'), ('Script Writer', 'Haura Hafizha H. (18023058)'), ('Script Writer', 'M. Dzaki Farhansyah (13223034)'), ('Programmer', 'M. Luthfi Alghazali (13223097)'), ('Programmer', 'Johanna Sekar M. (13223061)'), ('Programmer', 'Gregory Salman A. (13223016)'), ('Graphic Design and UI/UX Designer', 'Zahra Faiza F. (18323002)'), ('Graphic Design and UI/UX Designer', 'Emir Rasyadi A. (18023027)'), ('Graphic Design and UI/UX Designer', 'Kiyo Lee Tiono (13223013)'), ('Sound Designer', 'Galih M. Syah Athaya (13223115)'), ('Quality Assurance', 'Lintang Suminar (18023015)'), ('Quality Assurance', 'Joyceline Audrey (18023038)'), ('Publication Specialist', 'Agita Trinanda Ilmi (13223003)')   
+    credits = ('Project Manager', 'Thurfah Naura Qolbi (13223021)'), ('Game Designer', 'Rafi Ihsan A. (13223018)'), ('Game Designer', 'Amirul Akhyar H. (13223077)'), ('Script Writer', 'Haura Hafizha H. (18023058)'), ('Script Writer', 'M. Dzaki Farhansyah (13223034)'), ('Programmer', 'M. Luthfii Alghazali (13223097)'), ('Programmer', 'Johanna Sekar M. (13223061)'), ('Programmer', 'Gregory Salman A. (13223016)'), ('Graphic Design and UI/UX Designer', 'Zahra Faiza F. (18323002)'), ('Graphic Design and UI/UX Designer', 'Emir Rasyadi A. (18023027)'), ('Graphic Design and UI/UX Designer', 'Kiyo Lee Tiono (13223013)'), ('Sound Designer', 'Galih M. Syah Athaya (13223115)'), ('Quality Assurance', 'Lintang Suminar (18023015)'), ('Quality Assurance', 'Joyceline Audrey (18023038)'), ('Publication Specialist', 'Agita Trinanda Ilmi (13223003)')   
     credits_s = "{size=80}Credits\n\n"
     c1 = ''
     for c in credits:
@@ -1391,7 +1391,7 @@ label ending4:
 label end_credit:
     scene black
     centered "Kamu telah menamatkan game ini"
-    centered "Korupsi menghancurkan keadilan dan merampas hak-hak rakyat.\nJangan membiarkan korupsi merusak masa depan generasi penerus kita."
+    centered "Korupsi menghancurkan keadilan dan merampas hak-hak rakyat.\nJangan membiarkan korupsi merusak masa depan generasi penerus kita. \n \n end credit incoming..."
     call credits
     return
 
