@@ -171,6 +171,7 @@ image Sulthan_marah = "Karakter/mc marah.png"
 image Sulthan_nyengir = "Karakter/mc nyengir.png"
 image Sulthan_sedih = "Karakter/mc sedih.png"
 image Sulthan_senyumtipis = "Karakter/mc senyum tipis.png"
+image Sulthan_ngelab = "Karakter/mc ngelab.png"
 image mc_gray = "Karakter/mc_gray.png"
 
 #SERENA
@@ -195,6 +196,7 @@ image Rika = "Karakter/sekretaris mc.png"
 image Polisi = "Karakter/polisi 1.png" 
 image Polisi_marah = "Karakter/polisi ngambeg.png" 
 image Polisi_kaget = "Karakter/polisi wuih kaget.png" 
+image Polisi_senyum_tipis = "Karakter/polisi senyum tipis.png" 
 
 #JAKSA
 image Jaksa = "Karakter/jaksa.png"
@@ -524,13 +526,13 @@ label investigate:
             centered "Keesokan harinya, di lab sekolah..."
 
             scene lab with fade
-            show Sulthan with dissolve
+            show Sulthan_ngelab with dissolve
             Sulthan "Pertama aku bisa mengambil strip test reagen buat mengecek kandungan airnya."
             Sulthan "Aku tinggal masukin strip tesnya ke air. Eh, aku butuh gelas kimia sepertinya."
-            hide Sulthan with dissolve
+            hide Sulthan_ngelab with dissolve
             Sulthan "..."
             Sulthan "..."
-            show Sulthan with dissolve
+            show Sulthan_ngelab with dissolve
 
             Sulthan "Okeh gelas kimia sudah, tinggal celup deh"
             '...'
@@ -552,7 +554,7 @@ label investigate:
                 "Cek kembali dokumen resmi semalam":
                     Sulthan "AH IYA, DOKUMEN ITU!"
                     Sulthan "Aku bisa kembali ke kantor ayah dan memfoto dokumen itu. Baiklah, akan kulakukan setelah pulang sekolah."
-                    hide Sulthan with dissolve
+                    hide Sulthan_ngelab with dissolve
 
                     scene black with fade
                     centered "Selesai sekolah Sulthan langsung menuju kantor ayahnya"
@@ -714,6 +716,7 @@ label investigate:
                     Sulthan "Rasanya sudah cukup deh bukti ini"
                     Sulthan "Sepulang sekolah, aku langsung ke kantor polisi saja deh"
                     scene black with fade
+                    hide Sulthan_ngelab with dissolve
 
                     jump bukti1
 
@@ -1093,14 +1096,14 @@ label bukti0:
 label ending3:
     Sulthan "(Mengangguk pelan, matanya berkaca-kaca)\nSaya tahu, Pak. Tapi saya tidak bisa diam saja. Orang-orang di sekitar saya... mereka mungkin terkena dampak yang sama. Ini bukan hanya tentang saya."
     hide Polisi_kaget
-    show Polisi at left #senyumtipis
+    show Polisi_senyum_tipis at left
     Polisi "(Sambil tersenyum tipis, nada suaranya meyakinkan)\nKamu melakukan hal yang benar. Kami akan mulai menyelidiki ini secepatnya. Apakah kamu bersedia bekerja sama lebih lanjut jika diperlukan?"
     hide Sulthan_sedih
     show Sulthan at right
     Sulthan "(Menatap polisi dengan tatapan tegas meskipun ada sedikit ketakutan di matanya)\nSaya siap, Pak. Apa pun yang diperlukan untuk memastikan ini tidak terus terjadi."
     Polisi "hmmm... baiklah. Kami akan memulai penyelidikan. Terima kasih atas keberanianmu, Sulthan. Jika ada perkembangan, kami akan segera menghubungimu."
     hide sulthan with dissolve
-    hide Polisi with dissolve#senyumtipis
+    hide Polisi_senyum_tipis with dissolve
 
     scene black with fade
     centered "Polisi setuju memulai investigasi \n Sulthan berdiri, mengangguk pelan, dan meninggalkan kantor polisi dengan langkah berat namun hati yang lebih lega."
@@ -1272,14 +1275,14 @@ label ending4:
     Polisi "(Sambil melihat dokumen dan mencatat)\nIni langkah besar yang kamu ambil dengan melapor. Kami akan memeriksa dokumen ini. Tapi kamu harus tahu, melibatkan keluarga dalam masalah ini tidak akan mudah."
     Sulthan "(Mengangguk pelan, matanya berkaca-kaca)\nSaya tahu, Pak. Tapi saya tidak bisa diam saja. Orang-orang di sekitar saya... mereka mungkin terkena dampak yang sama. Ini bukan hanya tentang saya."
     hide Polisi_kaget
-    show Polisi at left #senyumtipis
+    show Polisi_senyum_tipis at left 
     Polisi "(Sambil tersenyum tipis, nada suaranya meyakinkan)\nKamu melakukan hal yang benar. Kami akan mulai menyelidiki ini secepatnya. Apakah kamu bersedia bekerja sama lebih lanjut jika diperlukan?"
     hide Sulthan_sedih
     show Sulthan at right
     Sulthan "(Menatap polisi dengan tatapan tegas meskipun ada sedikit ketakutan di matanya)\nSaya siap, Pak. Apa pun yang diperlukan untuk memastikan ini tidak terus terjadi."
     Polisi "hmmm... baiklah. Kami akan memulai penyelidikan. Terima kasih atas keberanianmu, Sulthan. Jika ada perkembangan, kami akan segera menghubungimu."
     hide sulthan with dissolve
-    hide Polisi with dissolve#senyumtipis
+    hide Polisi_senyum_tipis with dissolve
 
     scene black with fade
     centered "Polisi setuju memulai investigasi \n Sulthan berdiri, mengangguk pelan, dan meninggalkan kantor polisi dengan langkah berat namun hati yang lebih lega."
