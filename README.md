@@ -5,7 +5,7 @@ Hai! Selamat datang di repository visual novel berjudul Proyek Terlarang!
   <br />
 Visual novel ini dibuat untuk memenuhi tugas besar mata kuliah Pancasila dan kewarganegaraan (KU2071) kelas 25 Institut Teknologi Bandung semester ganjil 2024  
   <br />
-Untuk tutorial memainkan visual novel ini, silahkan buka file tutorial.txt  
+Untuk tutorial memainkan visual novel ini, silahkan buka folder Tutorial dan ikuti instruksi pada tutorial.txt  
 <br />
 Lihat juga sosial media instagram kami di @proyekterlarang_  
   <br /><br /><br />
