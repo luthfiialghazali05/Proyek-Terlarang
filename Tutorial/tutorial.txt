@@ -1,0 +1,19 @@
+REPOSITORY GAME
+https://github.com/luthfiialghazali05/Proyek-Terlarang
+
+Renpy
+https://www.renpy.org/latest.html
+
+(silakan lihat gambar untuk referensi tutorial)
+
+Tutorial:
+1. Install renpy dengan cara klik tulisan "download SDK zip" pada link renpy di atas
+2. Extract dan buka foldernya. aplikasi renpy adalah file bernama renpy.exe
+3. Buka repository dan klik tombol bertuliskan "code" yang berwarna hijau
+4. Klik download zip
+5. Buka renpy
+6. Klik preferences di bagian kanan bawah tampilan renpy
+7. Klik projects directory, pilih folder yang baru saja anda download dari repository.
+8. Klik return, akan terlihat pilihan "project terlarang" di halaman awal di bagian PROJECTS
+9. Klik proyek terlarang lalu klik tombol launch project
+10. Visual novel sudah bisa dimainkan
