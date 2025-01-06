@@ -262,7 +262,7 @@ label start:
     pause(3)
     hide LogoGame
     hide LogoITB
-    centered "{color=#FF0000}{b}DISCLAIMER:{/color}{/b}\n Semua konten, karakter, nama, tempat, dan alur cerita dalam gim ini sepenuhnya bersifat fiksi. Kesamaan dengan kejadian, individu, atau lokasi di dunia nyata hanyalah kebetulan belaka. Gim ini tidak dimaksudkan untuk mewakili atau mencerminkan pandangan, kepercayaan, atau peristiwa apa pun di dunia nyata."
+    centered "{color=#FF0000}{b}DISCLAIMER:{/color}{/b}\n Semua konten, karakter, nama, tempat, dan alur cerita dalam gim ini sepenuhnya bersifat fiksi. Kesamaan dengan kejadian, individu, atau lokasi di dunia nyata hanyalah kebetulan belaka. Gim ini tidak dimaksudkan untuk mewakili atau mencerminkan pandangan, kepercayaan, atau peristiwa apa pun di dunia nyata. \n \n \n Klik / Space untuk melanjutkan..."
 
 
     scene black
